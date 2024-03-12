@@ -24,11 +24,12 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Toast from 'react-native-toast-message';
+import YodyEmployeeBridge from './YodyEmployeeBridge';
 
 
-const App = () => {
+const App = (props) => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(props["input"])
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -37,7 +38,6 @@ const App = () => {
   };
 
   const showSuccessToast = () => {
-    console.log('login')
     Toast.show({
       type: 'success',
       text1: 'Notification',
@@ -61,10 +61,9 @@ const App = () => {
       <View style={styles.header}>
             <Image style={styles.image} source={require('./yody_employee_assets/icons/flutter.webp')}/>
             <TouchableOpacity onPress={() => {
-
             }}>
                 <TouchableOpacity onPress={() => {
-                    // YodyFoodBridge.close();
+                    YodyEmployeeBridge.close();
                 }}>
                     <Image style={[styles.image, {width: 24, height: 24}]} source={require('./yody_employee_assets/icons/close.png')}/>
                 </TouchableOpacity>
@@ -78,7 +77,9 @@ const App = () => {
                 <Text>+</Text>
             </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          YodyEmployeeBridge.update({"result": count})
+        }}>
             <View style={styles.button}>
                 <Text>Send</Text>
             </View>

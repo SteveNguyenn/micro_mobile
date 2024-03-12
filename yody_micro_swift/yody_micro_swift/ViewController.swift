@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var reactNativeResult: UILabel!
     @IBOutlet weak var flutterResult: UILabel!
+    @IBOutlet weak var employeeResult: UILabel!
+    @IBOutlet weak var foodResult: UILabel!
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var loginChannel : FlutterMethodChannel?
     
@@ -48,19 +50,30 @@ class ViewController: UIViewController {
     @IBAction func foodReactNativeTapped(_ sender: Any) {
         let vc = ReactViewController()
         vc.modalPresentationStyle = .fullScreen
-        vc.setModuleName(name: "yody_food")
+        vc.setModuleName(name: "yody_food", input: Int(foodResult.text ?? ""))
         self.present(vc, animated: true)
     }
     
-    @IBAction func deliveryReactNativeTapped(_ sender: Any) {
+    @IBAction func employeeReactNativeTapped(_ sender: Any) {
         let vc = ReactViewController()
         vc.modalPresentationStyle = .fullScreen
-        vc.setModuleName(name: "yody_employee")
+        vc.setModuleName(name: "yody_employee", input: Int(employeeResult.text ?? ""))
         self.present(vc, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("employee_updated"), object: nil, queue: .main) { [weak self] notification in
+            if let userInfo = notification.userInfo, let result = userInfo["result"] {
+                guard let self = self else { return }
+                self.employeeResult.text = "\(result)"
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

@@ -11,6 +11,7 @@ import React
 class ReactViewController: UIViewController {
     
     var moduleName: String?
+    var input: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +19,15 @@ class ReactViewController: UIViewController {
             guard let self = self else { return }
             self.dismiss(animated: true)
         }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("employee_updated"), object: nil, queue: .main) { [weak self] notification in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
     }
     
-    func setModuleName(name: String) {
+    func setModuleName(name: String, input: Int?) {
         moduleName = name
+        self.input = input
     }
     
     override func loadView() {
@@ -29,16 +35,16 @@ class ReactViewController: UIViewController {
     }
     
     func loadReactNativeView() {
-        var jsCodeLocation: URL?
+        let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")
         #if DEBUG
-            jsCodeLocation = Bundle.main.url(forResource: moduleName ?? "", withExtension: "jsbundle")
+//            jsCodeLocation = Bundle.main.url(forResource: moduleName ?? "", withExtension: "jsbundle")
         #else
             jsCodeLocation = Bundle.main.url(forResource: moduleName ?? "", withExtension: "jsbundle")
         #endif
         let rootView = RCTRootView(
             bundleURL: jsCodeLocation!,
             moduleName: moduleName ?? "",
-            initialProperties: nil,
+            initialProperties: ["input": input ?? 0],
             launchOptions: nil
         )
         self.view = rootView

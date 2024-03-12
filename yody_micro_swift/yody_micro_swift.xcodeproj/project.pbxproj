@@ -15,9 +15,11 @@
 		3D7CFC552BA00B5800F441B3 /* ReactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CFC542BA00B5800F441B3 /* ReactViewController.swift */; };
 		3D9DE3222BA02ED900629731 /* YodyFoodBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DE3212BA02ED900629731 /* YodyFoodBridge.swift */; };
 		3D9DE3252BA02F4500629731 /* YodyFoodBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DE3242BA02F4500629731 /* YodyFoodBridge.m */; };
-		3D9DE32B2BA0312700629731 /* yody_delivery.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE32A2BA0312700629731 /* yody_delivery.jsbundle */; };
 		3D9DE3302BA03ADB00629731 /* yody_food.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE32F2BA03ADB00629731 /* yody_food.jsbundle */; };
-		3D9DE33A2BA040C100629731 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE3392BA040C100629731 /* assets */; };
+		3D9DE33C2BA0488000629731 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE33B2BA0488000629731 /* assets */; };
+		3D9DE33E2BA0491800629731 /* yody_employee.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE33D2BA0491700629731 /* yody_employee.jsbundle */; };
+		3D9DE3402BA04EDF00629731 /* YodyEmployeeBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DE33F2BA04EDE00629731 /* YodyEmployeeBridge.swift */; };
+		3D9DE3422BA04EEF00629731 /* YodyEmployeeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DE3412BA04EEE00629731 /* YodyEmployeeBridge.m */; };
 		D0A9889E794352828864FAF7 /* Pods_yody_micro_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A918A422FEB14068C23BAA0C /* Pods_yody_micro_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,9 +36,11 @@
 		3D9DE3212BA02ED900629731 /* YodyFoodBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YodyFoodBridge.swift; sourceTree = "<group>"; };
 		3D9DE3232BA02F4500629731 /* yody_micro_swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "yody_micro_swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		3D9DE3242BA02F4500629731 /* YodyFoodBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YodyFoodBridge.m; sourceTree = "<group>"; };
-		3D9DE32A2BA0312700629731 /* yody_delivery.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = yody_delivery.jsbundle; sourceTree = SOURCE_ROOT; };
 		3D9DE32F2BA03ADB00629731 /* yody_food.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = yody_food.jsbundle; sourceTree = "<group>"; };
-		3D9DE3392BA040C100629731 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		3D9DE33B2BA0488000629731 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		3D9DE33D2BA0491700629731 /* yody_employee.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = yody_employee.jsbundle; sourceTree = "<group>"; };
+		3D9DE33F2BA04EDE00629731 /* YodyEmployeeBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YodyEmployeeBridge.swift; sourceTree = "<group>"; };
+		3D9DE3412BA04EEE00629731 /* YodyEmployeeBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YodyEmployeeBridge.m; sourceTree = "<group>"; };
 		4901F17CBF6BFEA9EC17EA44 /* Pods-yody_micro_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yody_micro_swift.debug.xcconfig"; path = "Target Support Files/Pods-yody_micro_swift/Pods-yody_micro_swift.debug.xcconfig"; sourceTree = "<group>"; };
 		A918A422FEB14068C23BAA0C /* Pods_yody_micro_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yody_micro_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -56,7 +60,7 @@
 		3D7CFC342B9FF15400F441B3 = {
 			isa = PBXGroup;
 			children = (
-				3D9DE3392BA040C100629731 /* assets */,
+				3D9DE33B2BA0488000629731 /* assets */,
 				3D7CFC3F2B9FF15500F441B3 /* yody_micro_swift */,
 				3D7CFC3E2B9FF15500F441B3 /* Products */,
 				607638A4A3D2E5E6F0BDE62E /* Pods */,
@@ -75,8 +79,8 @@
 		3D7CFC3F2B9FF15500F441B3 /* yody_micro_swift */ = {
 			isa = PBXGroup;
 			children = (
+				3D9DE33D2BA0491700629731 /* yody_employee.jsbundle */,
 				3D9DE32F2BA03ADB00629731 /* yody_food.jsbundle */,
-				3D9DE32A2BA0312700629731 /* yody_delivery.jsbundle */,
 				3D9DE3202BA02EC800629731 /* Bridge */,
 				3D7CFC402B9FF15500F441B3 /* AppDelegate.swift */,
 				3D7CFC442B9FF15500F441B3 /* ViewController.swift */,
@@ -95,6 +99,8 @@
 				3D9DE3212BA02ED900629731 /* YodyFoodBridge.swift */,
 				3D9DE3242BA02F4500629731 /* YodyFoodBridge.m */,
 				3D9DE3232BA02F4500629731 /* yody_micro_swift-Bridging-Header.h */,
+				3D9DE33F2BA04EDE00629731 /* YodyEmployeeBridge.swift */,
+				3D9DE3412BA04EEE00629731 /* YodyEmployeeBridge.m */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -180,12 +186,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D9DE33A2BA040C100629731 /* assets in Resources */,
+				3D9DE33C2BA0488000629731 /* assets in Resources */,
 				3D7CFC4D2B9FF15600F441B3 /* LaunchScreen.storyboard in Resources */,
 				3D9DE3302BA03ADB00629731 /* yody_food.jsbundle in Resources */,
 				3D7CFC4A2B9FF15600F441B3 /* Assets.xcassets in Resources */,
 				3D7CFC482B9FF15500F441B3 /* Main.storyboard in Resources */,
-				3D9DE32B2BA0312700629731 /* yody_delivery.jsbundle in Resources */,
+				3D9DE33E2BA0491800629731 /* yody_employee.jsbundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,8 +285,10 @@
 				3D7CFC452B9FF15500F441B3 /* ViewController.swift in Sources */,
 				3D9DE3222BA02ED900629731 /* YodyFoodBridge.swift in Sources */,
 				3D9DE3252BA02F4500629731 /* YodyFoodBridge.m in Sources */,
+				3D9DE3422BA04EEF00629731 /* YodyEmployeeBridge.m in Sources */,
 				3D7CFC412B9FF15500F441B3 /* AppDelegate.swift in Sources */,
 				3D7CFC552BA00B5800F441B3 /* ReactViewController.swift in Sources */,
+				3D9DE3402BA04EDF00629731 /* YodyEmployeeBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

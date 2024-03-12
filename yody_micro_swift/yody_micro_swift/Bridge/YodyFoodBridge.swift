@@ -12,6 +12,13 @@ import React
 
 @objc(YodyFoodBridge)
 class YodyFoodBridge : RCTEventEmitter {
+    
+   @objc public static var instance : YodyFoodBridge!
+
+    override init() {
+        super.init()
+        YodyFoodBridge.instance = self
+   }
   
   @objc override static func requiresMainQueueSetup() -> Bool {
     return true
@@ -24,7 +31,7 @@ class YodyFoodBridge : RCTEventEmitter {
   
   public override func supportedEvents() -> [String]! {
       return [
-          
+        "send_result"
       ]
   }
 }
