@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="yody_micro_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swift" translatesAutoresizingMaskIntoConstraints="NO" id="DNa-a2-09r">
+                                <rect key="frame" x="63" y="209.66666666666666" width="267" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="266.67000000000002" id="dEG-iO-q9y"/>
+                                    <constraint firstAttribute="height" constant="30" id="twl-LN-2v6"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="euK-zp-dKe">
+                                <rect key="frame" x="76.666666666666686" y="287.66666666666669" width="240" height="277.00000000000006"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUm-KM-mFN">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flutter" translatesAutoresizingMaskIntoConstraints="NO" id="ZzC-rc-O1a">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="czz-n3-sk4"/>
+                                                    <constraint firstAttribute="height" constant="32" id="v9T-rz-ZWA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjr-80-UD8">
+                                                <rect key="frame" x="32" y="0.0" width="208" height="32"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Flutter - Login"/>
+                                                <connections>
+                                                    <action selector="tapFlutter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="62N-vi-piM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTh-sh-YW5">
+                                        <rect key="frame" x="0.0" y="56.000000000000007" width="240" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7Q-0q-8hl">
+                                        <rect key="frame" x="0.0" y="100.33333333333331" width="240" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="react-native" translatesAutoresizingMaskIntoConstraints="NO" id="TRb-9v-Ldo">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="1bl-vF-HPU"/>
+                                                    <constraint firstAttribute="width" constant="32" id="aAR-Fs-Bsd"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDe-U0-JtN">
+                                                <rect key="frame" x="32" y="0.0" width="208" height="32"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="React native - Food"/>
+                                                <connections>
+                                                    <action selector="foodReactNativeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xJw-o2-S43"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b25-EV-uku">
+                                        <rect key="frame" x="0.0" y="156.33333333333331" width="240" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djG-bW-A7C">
+                                        <rect key="frame" x="0.0" y="200.66666666666663" width="240" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="react-native" translatesAutoresizingMaskIntoConstraints="NO" id="dde-gs-yj2">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="nEi-CJ-3hL"/>
+                                                    <constraint firstAttribute="height" constant="32" id="u4d-lg-Wps"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwG-Dr-6Cw">
+                                                <rect key="frame" x="32" y="0.0" width="208" height="32"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="React native - Delivery"/>
+                                                <connections>
+                                                    <action selector="deliveryReactNativeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uVE-BX-7rb"/>
+                                                    <action selector="tapReactNative:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sev-rN-Wvs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcu-Mq-ccf">
+                                        <rect key="frame" x="0.0" y="256.66666666666669" width="240" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="8GP-bc-AqG"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="euK-zp-dKe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3Ug-tB-Sy2"/>
+                            <constraint firstItem="DNa-a2-09r" firstAttribute="centerX" secondItem="euK-zp-dKe" secondAttribute="centerX" id="4fX-4d-ehq"/>
+                            <constraint firstItem="euK-zp-dKe" firstAttribute="top" secondItem="DNa-a2-09r" secondAttribute="bottom" constant="48" id="Edo-nh-o9T"/>
+                            <constraint firstItem="euK-zp-dKe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NQe-gn-ZDa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="flutterResult" destination="zTh-sh-YW5" id="jls-ei-uxX"/>
+                        <outlet property="reactNativeResult" destination="b25-EV-uku" id="FYo-oR-hLH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63" y="-28"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="flutter" width="333.33334350585938" height="333.33334350585938"/>
+        <image name="react-native" width="400" height="347.66665649414062"/>
+        <image name="swift" width="266.66665649414062" height="82.333335876464844"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

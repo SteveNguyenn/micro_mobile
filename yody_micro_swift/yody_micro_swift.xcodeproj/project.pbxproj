@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D7CFC412B9FF15500F441B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CFC402B9FF15500F441B3 /* AppDelegate.swift */; };
+		3D7CFC452B9FF15500F441B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CFC442B9FF15500F441B3 /* ViewController.swift */; };
+		3D7CFC482B9FF15500F441B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CFC462B9FF15500F441B3 /* Main.storyboard */; };
+		3D7CFC4A2B9FF15600F441B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CFC492B9FF15600F441B3 /* Assets.xcassets */; };
+		3D7CFC4D2B9FF15600F441B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CFC4B2B9FF15600F441B3 /* LaunchScreen.storyboard */; };
+		3D7CFC552BA00B5800F441B3 /* ReactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CFC542BA00B5800F441B3 /* ReactViewController.swift */; };
+		3D9DE3222BA02ED900629731 /* YodyFoodBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DE3212BA02ED900629731 /* YodyFoodBridge.swift */; };
+		3D9DE3252BA02F4500629731 /* YodyFoodBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DE3242BA02F4500629731 /* YodyFoodBridge.m */; };
+		3D9DE32B2BA0312700629731 /* yody_delivery.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE32A2BA0312700629731 /* yody_delivery.jsbundle */; };
+		3D9DE3302BA03ADB00629731 /* yody_food.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE32F2BA03ADB00629731 /* yody_food.jsbundle */; };
+		3D9DE33A2BA040C100629731 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE3392BA040C100629731 /* assets */; };
+		D0A9889E794352828864FAF7 /* Pods_yody_micro_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A918A422FEB14068C23BAA0C /* Pods_yody_micro_swift.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		371D7B0E62A80581E6DCA9BB /* Pods-yody_micro_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yody_micro_swift.release.xcconfig"; path = "Target Support Files/Pods-yody_micro_swift/Pods-yody_micro_swift.release.xcconfig"; sourceTree = "<group>"; };
+		3D7CFC3D2B9FF15500F441B3 /* yody_micro_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yody_micro_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D7CFC402B9FF15500F441B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3D7CFC442B9FF15500F441B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3D7CFC472B9FF15500F441B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3D7CFC492B9FF15600F441B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D7CFC4C2B9FF15600F441B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3D7CFC4E2B9FF15600F441B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D7CFC542BA00B5800F441B3 /* ReactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactViewController.swift; sourceTree = "<group>"; };
+		3D9DE3212BA02ED900629731 /* YodyFoodBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YodyFoodBridge.swift; sourceTree = "<group>"; };
+		3D9DE3232BA02F4500629731 /* yody_micro_swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "yody_micro_swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		3D9DE3242BA02F4500629731 /* YodyFoodBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YodyFoodBridge.m; sourceTree = "<group>"; };
+		3D9DE32A2BA0312700629731 /* yody_delivery.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = yody_delivery.jsbundle; sourceTree = SOURCE_ROOT; };
+		3D9DE32F2BA03ADB00629731 /* yody_food.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = yody_food.jsbundle; sourceTree = "<group>"; };
+		3D9DE3392BA040C100629731 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		4901F17CBF6BFEA9EC17EA44 /* Pods-yody_micro_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yody_micro_swift.debug.xcconfig"; path = "Target Support Files/Pods-yody_micro_swift/Pods-yody_micro_swift.debug.xcconfig"; sourceTree = "<group>"; };
+		A918A422FEB14068C23BAA0C /* Pods_yody_micro_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yody_micro_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D7CFC3A2B9FF15500F441B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A9889E794352828864FAF7 /* Pods_yody_micro_swift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D7CFC342B9FF15400F441B3 = {
+			isa = PBXGroup;
+			children = (
+				3D9DE3392BA040C100629731 /* assets */,
+				3D7CFC3F2B9FF15500F441B3 /* yody_micro_swift */,
+				3D7CFC3E2B9FF15500F441B3 /* Products */,
+				607638A4A3D2E5E6F0BDE62E /* Pods */,
+				D25ACA7C98E74410D336B178 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3D7CFC3E2B9FF15500F441B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D7CFC3D2B9FF15500F441B3 /* yody_micro_swift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D7CFC3F2B9FF15500F441B3 /* yody_micro_swift */ = {
+			isa = PBXGroup;
+			children = (
+				3D9DE32F2BA03ADB00629731 /* yody_food.jsbundle */,
+				3D9DE32A2BA0312700629731 /* yody_delivery.jsbundle */,
+				3D9DE3202BA02EC800629731 /* Bridge */,
+				3D7CFC402B9FF15500F441B3 /* AppDelegate.swift */,
+				3D7CFC442B9FF15500F441B3 /* ViewController.swift */,
+				3D7CFC542BA00B5800F441B3 /* ReactViewController.swift */,
+				3D7CFC462B9FF15500F441B3 /* Main.storyboard */,
+				3D7CFC492B9FF15600F441B3 /* Assets.xcassets */,
+				3D7CFC4B2B9FF15600F441B3 /* LaunchScreen.storyboard */,
+				3D7CFC4E2B9FF15600F441B3 /* Info.plist */,
+			);
+			path = yody_micro_swift;
+			sourceTree = "<group>";
+		};
+		3D9DE3202BA02EC800629731 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				3D9DE3212BA02ED900629731 /* YodyFoodBridge.swift */,
+				3D9DE3242BA02F4500629731 /* YodyFoodBridge.m */,
+				3D9DE3232BA02F4500629731 /* yody_micro_swift-Bridging-Header.h */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		607638A4A3D2E5E6F0BDE62E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4901F17CBF6BFEA9EC17EA44 /* Pods-yody_micro_swift.debug.xcconfig */,
+				371D7B0E62A80581E6DCA9BB /* Pods-yody_micro_swift.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D25ACA7C98E74410D336B178 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A918A422FEB14068C23BAA0C /* Pods_yody_micro_swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D7CFC3C2B9FF15500F441B3 /* yody_micro_swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D7CFC512B9FF15600F441B3 /* Build configuration list for PBXNativeTarget "yody_micro_swift" */;
+			buildPhases = (
+				1F5C6F8E66B344D061AA2DBB /* [CP] Check Pods Manifest.lock */,
+				8D4EC274366EA3E9CA8C015D /* [CP-User] Run Flutter Build yody_login Script */,
+				3D7CFC392B9FF15500F441B3 /* Sources */,
+				3D7CFC3A2B9FF15500F441B3 /* Frameworks */,
+				3D7CFC3B2B9FF15500F441B3 /* Resources */,
+				1DDD308A3A102E8DD09A187D /* [CP-User] Embed Flutter Build yody_login Script */,
+				4EF87E0D158AB3F748E29B99 /* [CP] Embed Pods Frameworks */,
+				3D9DE31E2BA00EF200629731 /* React-Native NVM For yody food */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yody_micro_swift;
+			productName = yody_micro_swift;
+			productReference = 3D7CFC3D2B9FF15500F441B3 /* yody_micro_swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D7CFC352B9FF15400F441B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					3D7CFC3C2B9FF15500F441B3 = {
+						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
+					};
+				};
+			};
+			buildConfigurationList = 3D7CFC382B9FF15400F441B3 /* Build configuration list for PBXProject "yody_micro_swift" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D7CFC342B9FF15400F441B3;
+			productRefGroup = 3D7CFC3E2B9FF15500F441B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D7CFC3C2B9FF15500F441B3 /* yody_micro_swift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D7CFC3B2B9FF15500F441B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D9DE33A2BA040C100629731 /* assets in Resources */,
+				3D7CFC4D2B9FF15600F441B3 /* LaunchScreen.storyboard in Resources */,
+				3D9DE3302BA03ADB00629731 /* yody_food.jsbundle in Resources */,
+				3D7CFC4A2B9FF15600F441B3 /* Assets.xcassets in Resources */,
+				3D7CFC482B9FF15500F441B3 /* Main.storyboard in Resources */,
+				3D9DE32B2BA0312700629731 /* yody_delivery.jsbundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1DDD308A3A102E8DD09A187D /* [CP-User] Embed Flutter Build yody_login Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Embed Flutter Build yody_login Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../yody_login/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
+		};
+		1F5C6F8E66B344D061AA2DBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-yody_micro_swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D9DE31E2BA00EF200629731 /* React-Native NVM For yody food */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "React-Native NVM For yody food";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\" # This loads nvm\n\nnvm use 20.11.1\n\nexport NODE_BINARY=node\n../yody_food/node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		4EF87E0D158AB3F748E29B99 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yody_micro_swift/Pods-yody_micro_swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yody_micro_swift/Pods-yody_micro_swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yody_micro_swift/Pods-yody_micro_swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D4EC274366EA3E9CA8C015D /* [CP-User] Run Flutter Build yody_login Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Run Flutter Build yody_login Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../yody_login/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D7CFC392B9FF15500F441B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D7CFC452B9FF15500F441B3 /* ViewController.swift in Sources */,
+				3D9DE3222BA02ED900629731 /* YodyFoodBridge.swift in Sources */,
+				3D9DE3252BA02F4500629731 /* YodyFoodBridge.m in Sources */,
+				3D7CFC412B9FF15500F441B3 /* AppDelegate.swift in Sources */,
+				3D7CFC552BA00B5800F441B3 /* ReactViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3D7CFC462B9FF15500F441B3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D7CFC472B9FF15500F441B3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3D7CFC4B2B9FF15600F441B3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D7CFC4C2B9FF15600F441B3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D7CFC4F2B9FF15600F441B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3D7CFC502B9FF15600F441B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D7CFC522B9FF15600F441B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4901F17CBF6BFEA9EC17EA44 /* Pods-yody_micro_swift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY62U5R8XP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = yody_micro_swift/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.steve.yody-micro-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "yody_micro_swift/Bridge/yody_micro_swift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = NO;
+			};
+			name = Debug;
+		};
+		3D7CFC532B9FF15600F441B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 371D7B0E62A80581E6DCA9BB /* Pods-yody_micro_swift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY62U5R8XP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = yody_micro_swift/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.steve.yody-micro-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "yody_micro_swift/Bridge/yody_micro_swift-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D7CFC382B9FF15400F441B3 /* Build configuration list for PBXProject "yody_micro_swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D7CFC4F2B9FF15600F441B3 /* Debug */,
+				3D7CFC502B9FF15600F441B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D7CFC512B9FF15600F441B3 /* Build configuration list for PBXNativeTarget "yody_micro_swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D7CFC522B9FF15600F441B3 /* Debug */,
+				3D7CFC532B9FF15600F441B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D7CFC352B9FF15400F441B3 /* Project object */;
+}
