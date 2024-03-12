@@ -16,13 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var foodResult: UILabel!
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var loginChannel : FlutterMethodChannel?
+    var profileChannel : FlutterMethodChannel?
     
-    @IBAction func tapFlutter(_ sender: Any) {
+    @IBAction func loginFlutterTap(_ sender: Any) {
         DispatchQueue.main.async { [weak self] in
           guard let self = self else { return }
           //get engine and run engine
           let engine = delegate.loginEngine
-          engine?.run()
+          engine?.run(withEntrypoint: "main", libraryURI: "package:yody_login/main.dart")
           let window = delegate.window
           //init controller
           let flutterController = FlutterViewController(engine: engine!, nibName: nil, bundle: nil)
@@ -60,6 +61,27 @@ class ViewController: UIViewController {
         vc.setModuleName(name: "yody_employee", input: Int(employeeResult.text ?? ""))
         self.present(vc, animated: true)
     }
+    
+    @IBAction func profileFlutterTap(_ sender: Any) {
+        DispatchQueue.main.async { [weak self] in
+          guard let self = self else { return }
+          //get engine and run engine
+          let engine = delegate.profileEngine
+          engine?.run(withEntrypoint: "main", libraryURI: "package:yody_profile/main.dart")
+          let window = delegate.window
+          //init controller
+          let flutterController = FlutterViewController(engine: engine!, nibName: nil, bundle: nil)
+          self.profileChannel = FlutterMethodChannel.init(name: "profile", binaryMessenger: flutterController.binaryMessenger)
+          flutterController.modalPresentationStyle = .fullScreen
+          window?.rootViewController?.present(flutterController, animated: true)
+          //send data to flutter
+//          self.profileChannel?.invokeMethod("init", arguments: ["input": Int(flutterResult?.text ?? "")])
+          self.profileChannel?.setMethodCallHandler({ [weak self] call, result in
+              flutterController.dismiss(animated: true)
+          })
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

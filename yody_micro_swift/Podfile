@@ -2,6 +2,8 @@
 platform :ios, '13.0'
 flutter_login_application_path = '../yody_login'
 load File.join(flutter_login_application_path, '.ios', 'Flutter', 'podhelper.rb')
+flutter_profile_application_path = '../yody_profile'
+load File.join(flutter_profile_application_path, '.ios', 'Flutter', 'podhelper.rb')
 require_relative '../yody_food/node_modules/react-native/scripts/react_native_pods'
 require_relative '../yody_food/node_modules/@react-native-community/cli-platform-ios/native_modules'
 require_relative '../yody_employee/node_modules/react-native/scripts/react_native_pods'
@@ -10,7 +12,7 @@ require_relative '../yody_employee/node_modules/@react-native-community/cli-plat
 target 'yody_micro_swift' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  install_all_flutter_pods(flutter_login_application_path)
+  install_all_flutter_pods([flutter_login_application_path, flutter_profile_application_path])
     # Flags change depending on the env values.
   flags = get_default_flags()
   use_react_native!(:path => '../yody_food/node_modules/react-native')

@@ -130,13 +130,13 @@
 			buildConfigurationList = 3D7CFC512B9FF15600F441B3 /* Build configuration list for PBXNativeTarget "yody_micro_swift" */;
 			buildPhases = (
 				1F5C6F8E66B344D061AA2DBB /* [CP] Check Pods Manifest.lock */,
-				8D4EC274366EA3E9CA8C015D /* [CP-User] Run Flutter Build yody_login Script */,
+				E7B1214C9A7ECBE47AEDFD57 /* [CP-User] Run Flutter Build yody_profile Script */,
 				3D7CFC392B9FF15500F441B3 /* Sources */,
 				3D7CFC3A2B9FF15500F441B3 /* Frameworks */,
 				3D7CFC3B2B9FF15500F441B3 /* Resources */,
-				1DDD308A3A102E8DD09A187D /* [CP-User] Embed Flutter Build yody_login Script */,
 				4EF87E0D158AB3F748E29B99 /* [CP] Embed Pods Frameworks */,
 				3D9DE31E2BA00EF200629731 /* React-Native NVM For yody food */,
+				7362824C26D920C8E7FBDD5A /* [CP-User] Embed Flutter Build yody_profile Script */,
 			);
 			buildRules = (
 			);
@@ -198,16 +198,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1DDD308A3A102E8DD09A187D /* [CP-User] Embed Flutter Build yody_login Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] Embed Flutter Build yody_login Script";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../yody_login/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
-		};
 		1F5C6F8E66B344D061AA2DBB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,15 +255,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yody_micro_swift/Pods-yody_micro_swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D4EC274366EA3E9CA8C015D /* [CP-User] Run Flutter Build yody_login Script */ = {
+		7362824C26D920C8E7FBDD5A /* [CP-User] Embed Flutter Build yody_profile Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			name = "[CP-User] Run Flutter Build yody_login Script";
+			name = "[CP-User] Embed Flutter Build yody_profile Script";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../yody_login/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../yody_profile/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
+		};
+		E7B1214C9A7ECBE47AEDFD57 /* [CP-User] Run Flutter Build yody_profile Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Run Flutter Build yody_profile Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../yody_profile/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
 		};
 /* End PBXShellScriptBuildPhase section */
 
