@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 const chanel = MethodChannel('login');
 
 void main() {
-  runApp(const MyApp());
+  runApp(const YodyLogin());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class YodyLogin extends StatelessWidget {
+  const YodyLogin({super.key});
 
   // This widget is the root of your application.
   @override

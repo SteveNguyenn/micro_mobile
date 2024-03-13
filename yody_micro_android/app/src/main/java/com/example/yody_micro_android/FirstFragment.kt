@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.yody_micro_android.databinding.FragmentFirstBinding
 import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.embedding.engine.FlutterEngineCache
+import io.flutter.embedding.engine.dart.DartExecutor
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
 
-private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentFirstBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -24,8 +28,8 @@ private var _binding: FragmentFirstBinding? = null
         savedInstanceState: Bundle?
     ): View {
 
-      _binding = FragmentFirstBinding.inflate(inflater, container, false)
-      return binding.root
+        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        return binding.root
 
     }
 
@@ -33,17 +37,23 @@ private var _binding: FragmentFirstBinding? = null
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            val engine = FlutterActivity.withNewEngine()
-            val bundle = Bundle()
-            bundle.putString("io.flutter.EntrypointUri", "package:yody_profile/main.dart")
+            val loginEngine = FlutterEngine(view.context)
+            loginEngine.navigationChannel.setInitialRoute("/yody_profile")
+            loginEngine.dartExecutor.executeDartEntrypoint(
+                DartExecutor.DartEntrypoint.createDefault()
+            )
+            FlutterEngineCache
+                .getInstance()
+                .put("login", loginEngine)
             startActivity(
-                engine.build(view.context),
-                bundle
+                FlutterActivity
+                    .withCachedEngine("login")
+                    .build(view.context)
             )
         }
     }
 
-override fun onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

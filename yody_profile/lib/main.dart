@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const YodyProfile());
 
 const chanel = MethodChannel('profile');
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class YodyProfile extends StatelessWidget {
+  const YodyProfile({super.key});
 
   // This widget is the root of your application.
   @override

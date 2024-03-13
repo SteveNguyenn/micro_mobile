@@ -3,9 +3,6 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven {
-            url 'https://storage.googleapis.com/download.flutter.io'
-        }
     }
 }
 
@@ -25,9 +22,5 @@ include ':app'
 setBinding(new Binding([gradle: this]))                                // new
 evaluate(new File(                                                     // new
         settingsDir.parentFile,                                            // new
-        'yody_login/.android/include_flutter.groovy'                   // new
-))
-evaluate(new File(                                                     // new
-        settingsDir.parentFile,                                            // new
-        'yody_profile/.android/include_flutter.groovy'                   // new
+        'yody_umbrella/.android/include_flutter.groovy'                   // new
 ))
