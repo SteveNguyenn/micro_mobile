@@ -25,48 +25,18 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
   - **Flutter** tương tác với **Native core**
   - **Native Core** tương tác với **React Native**</br>
 ![Modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/modules.png)
-2. Trong một module (tương tự giữa Flutter/React Native/Native)
+2. Trong một module (tương tự giữa Flutter/React Native/Native)</br>
+![module flow](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/feature_module.png)
 - Tính năng (Features): Nơi phát triển các tính năng của module và là nơi sẽ tương tác với **Native Core** </br>
 ![Feature module](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/feature_module.png)
-- Module Core: 
-
-### Ordered
-
-1. Item 1
-2. Item 2
-3. Item 3
-    1. Item 3a
-    2. Item 3b
-
-## Images
-
-![This is an alt text.](/image/sample.webp "This is a sample image.")
-
-## Links
-
-You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
-
-## Blockquotes
-
-> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
->
->> Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
-
-## Tables
-
-| Left columns  | Right columns |
-| ------------- |:-------------:|
-| left foo      | right foo     |
-| left bar      | right bar     |
-| left baz      | right baz     |
-
-## Blocks of code
-
-```
-let message = 'Hello world';
-alert(message);
-```
-
-## Inline code
-
-This web site is using `markedjs/marked`.
+- Core: Nơi cung cấp các API để cho **Features** gọi xuống các thư viện, bộ UI đã làm sẵn, .....
+- Library: Nơi viết sẵn các thư viện như UI, Local Storage, Network nhằm mục đích để tận dụng được lại ở nhiều **Features** tránh lặp lại code và đồng nhất code giữa các modules. Nó cũng nhằm mục đích khi developer muốn thay đổi 1 bộ UI nào đó trên ứng dụng chỉ cần cập nhật ở tầng này thì các module sẽ đổi. Điều này tránh rủi cho cho việc cần phải sửa lại trên từng module khi cần cập nhật 1 vấn đề nào đó.
+#### Truyền và nhận dữ liệu giữa
+1. Giữa các module với nhau: Có 2 cách để truyền và nhận dữ liệu giữa các module
+- Thông qua tầng **Native Core**: Tương tự như phần tương tác thì **Native Core** cũng sẽ chịu trách nhiệm truyền và nhận dữ liệu giữa các modules với nhau. **Native Core** sẽ là cầu nối để dữ liệu chạy qua.
+- Thông qua **Local Storage**: Thay vì đi qua **Native Core** thì khi cần truyền và nhận dữ liệu thì sẽ đưa xuống **Local Storage** từ đó có thể lấy ra sử dụng ở nơi cần dữ liệu.
+2. Trong từng module với nhau: 
+- Trong 1 module thì sẽ tận dụng truyền/nhận như cách thông thường mà các framework (Flutter/React Native) hay sử dụng: truyền dữ liệu, redux,....
+## Kĩ thuật
+1. Tài liệu triển khai cho [iOS](https://github.com/SteveNguyenn/micro_mobile/iOS.md)
+2. Tài liệu trển khai cho [Android](https://github.com/SteveNguyenn/micro_mobile/Android.md): 
