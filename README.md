@@ -16,11 +16,9 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 ![Native core](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/native_core.png)
 - Flutter modules(Không bắt buộc phải có trong kiến trúc): Chịu trách nhiệm phát triển một/nhiều tính năng trong ứng dụng. Các thành phần nhỏ có thể kết hợp lại với nhau và tương tác với **Native core** để hiển thị và tương tác. Xem ví dụ về flutter tại: [Yody Login](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_login), [Yody Profile](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_profile)</br>
 ![Flutter modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/flutter_modules.png)</br>
-- React native modules(Không bắt buộc phải có trong kiến trúc): Tương tự với **Flutter modules**. Xem ví dụ về **React Native** tại: [Yody Food](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_food), [Yody Profile](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_employee)</br>
-![React Native modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/rn_modules.png)
-</br>
-- Native modules(Không bắt buộc phải có trong kiến trúc): Tương tự với **Flutter modules** và **React Native**.
-</br>
+- React native modules(Không bắt buộc phải có trong kiến trúc): Tương tự với **Flutter modules**. Xem ví dụ về **React Native** tại: [Yody Food](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_food), [Yody Employee](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_employee)</br>
+![React Native modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/rn_modules.png)</br>
+- Native modules(Không bắt buộc phải có trong kiến trúc): Tương tự với **Flutter modules** và **React Native**.</br>
 #### Tương tác
 1. Giữa các module với nhau:
 - **Native Core** sẽ chịu trách nhiệm làm cầu nối để nối giữa các module khác nhau lại. Ví dụ để có tương tác từ **Flutter** và **React Native** thì chúng ta sẽ đi theo tuần tự: 
