@@ -154,7 +154,6 @@ Lưu ý: Nếu có nhiều hơn 1 module thì chỉ cần trỏ để lấy 1 ph
 ### Tương tác với modules
 #### Flutter
 1. Khởi chạy module
-- Vì có nhiều module nên chúng ta cần biết cần chạy module nào. Flutter có hỗ trợ để biết việc đó.
 ```
 DispatchQueue.main.async { [weak self] in
   guard let self = self else { return }
@@ -187,7 +186,7 @@ Lưu ý:
 <b>Giải thích</b>
 - Flutter và (Swift/Object) tương tác được với nhau thông qua 1 lớp gọi là **MethodChannel**
 - Cơ chế gần tương tự như pub/sub tức là 1 bên bắn đi và 1 bên lắng nghe nhận lại.</br></br>
-<b>Áp dụng</b></br>
+<b>Áp dụng</b></br></br>
 a. Đăng ký **MethodChannel** để truyền/nhận dữ liệu giữa Flutter và Native
 - Khởi tạo MethodChannel ở Native Core:
 ```
@@ -209,9 +208,9 @@ const channel = MethodChannel('#{name}');
 Lưu ý:
 - name: Dùng để định danh channel với mục đích có thể biết và kết nối được giữa Flutter và Swift
 ```
-- Cách gọi từ tầng Flutter Module xuống Native Core:
+- Gọi từ tầng Flutter Module xuống Native Core:
 ```
-//cách gọi từ tầng Flutter Module xuống tầng Native Core
+//Gọi từ tầng Flutter Module xuống tầng Native Core
 chanel.invokeMapMethod('#{name}', #{params});
 
 Ex: 
@@ -260,4 +259,39 @@ self.loginChannel?.setMethodCallHandler({ [weak self] call, result in
       flutterController.dismiss(animated: true)
     }
 })
+```
+
+#### React Native
+1. Khởi chạy module</br>
+**Hướng giải quyết**: **RCTRootView** chỉ là View nên để sử dụng được module thì cần tạo 1 VỉewController từ Native rồi gắn **RCTRootView** vào **ViewController** đó. Và từ đó ViewController này có nhiệm vụ tải và quản lý **RCTRootView**
+```
+//ViewController để chạy RCTRootView
+class ReactViewController: UIViewController {
+    override func loadView() {
+    }
+    
+    func loadReactNativeView() {
+        //Khai báo RCTRootView tại đây
+    }
+}
+```
+
+```
+///Khởi tạo RCTRootView và gắn vào ViewController
+let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")
+#if DEBUG
+#else
+    jsCodeLocation = Bundle.main.url(forResource: moduleName ?? "", withExtension: "jsbundle")
+#endif
+let rootView = RCTRootView(
+    bundleURL: jsCodeLocation!,
+    moduleName: moduleName ?? "",
+    initialProperties: ["input": input ?? 0],
+    launchOptions: nil
+)
+self.view = rootView
+Lưu ý:
+- Debug sẽ chạy localhost để kết nối với metro thuận tiện cho việc debug
+- Release sẽ chạy file bundle để tránh mất thời gian load Javascript lên
+- Khi tạo RCTRootView vào view của ViewController thì React Native UI sẽ hiển thị
 ```
