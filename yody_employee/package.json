@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ../yody_micro_swift/yody_micro_swift/yody_employee.jsbundle --assets-dest ../yody_micro_swift"
+    "bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ../yody_micro_swift/yody_micro_swift/yody_employee.jsbundle --assets-dest ../yody_micro_swift",
+    "bundle:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output ../yody_micro_android/app/src/main/assets/yody_employee.index.android.bundle --assets-dest ../yody_micro_android/app/src/main/res"
   },
   "dependencies": {
     "@babel/core": "^7.24.0",

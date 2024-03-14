@@ -3,6 +3,13 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven {
+            url ("$rootDir/../yody_food/node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../yody_employee/node_modules/jsc-android/dist")
+        }
     }
 }
 
@@ -14,6 +21,13 @@ dependencyResolutionManagement {
         maven {
             url 'https://storage.googleapis.com/download.flutter.io'
         }
+        maven {
+            url ("$rootDir/../yody_food/node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../yody_employee/node_modules/jsc-android/dist")
+        }
     }
 }
 
@@ -24,3 +38,5 @@ evaluate(new File(                                                     // new
         settingsDir.parentFile,                                            // new
         'yody_umbrella/.android/include_flutter.groovy'                   // new
 ))
+
+//apply from: file("../yody_food/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)

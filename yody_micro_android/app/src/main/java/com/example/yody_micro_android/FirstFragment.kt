@@ -1,5 +1,6 @@
 package com.example.yody_micro_android
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,16 @@ class FirstFragment : Fragment() {
                     .withNewEngine()
                     .initialRoute("/yody_profile")
                     .build(view.context)
+            )
+        }
+        binding.foodButton.setOnClickListener {
+            startActivity(
+                Intent(view.context, FoodActivity::class.java)
+            )
+        }
+        binding.employeeButton.setOnClickListener {
+            startActivity(
+                Intent(view.context, EmployeeActivity::class.java)
             )
         }
     }

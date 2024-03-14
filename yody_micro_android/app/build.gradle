@@ -3,16 +3,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
 }
 
-configurations.all {
-    resolutionStrategy {
-        eachDependency {
-            if ((requested.group == "org.jetbrains.kotlin") && (requested.name.startsWith("kotlin-stdlib"))) {
-                useVersion("1.8.0")
-            }
-        }
-    }
-}
-
 android {
     namespace 'com.example.yody_micro_android'
     compileSdk 34
@@ -60,4 +50,8 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
     implementation project(':flutter')
+    implementation "com.facebook.react:react-native:+" // From node_modules
+    implementation "org.webkit:android-jsc:+"
 }
+
+//apply from: file("../../yody_food/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
