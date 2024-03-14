@@ -4,7 +4,7 @@
 
 #### Flutter
 
-![Flutter Architecture](https://github.com/SteveNguyenn/micro_mobile/images/flutter_arch.png)  
+![Flutter Architecture](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/flutter_arch.png)  
 Xem thêm chi tiết tại [Flutter](https://docs.flutter.dev/resources/architectural-overview)</br>
 
 <b>Tóm tắt: </b>
@@ -23,7 +23,7 @@ Xem thêm chi tiết tại [Flutter](https://docs.flutter.dev/resources/architec
 
 #### React Native
 
-![React Native Architecture](https://github.com/SteveNguyenn/micro_mobile/images/rn_arch.jpeg)  
+![React Native Architecture](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/rn_arch.jpeg)  
 Xem thêm chi tiết tại [React Native](https://reactnative.dev/architecture/overview)</br>
 <b>Tóm tắt: </b>
 - React Native viết trên nền tảng là JavaScript. Mỗi lần cần vẽ UI/Logic thì bộ engine (React Native Engine) hoạt động và sẽ gọi code của các Platform.
@@ -41,5 +41,5 @@ Xem thêm chi tiết tại [React Native](https://reactnative.dev/architecture/o
 - Khi các module tạo sẽ sẽ có những node_modules. Bây giờ chỉ cần liên kết các thư node_modules vào trong native thông qua pod/build.gradle thì native sẽ thấy được các module đó. Chi tiết sẽ nằm ở phần kĩ thuật.
 
 ## Kĩ thuật
-1. Tài liệu triển khai cho [iOS](https://github.com/SteveNguyenn/micro_mobile/iOS.md)
-2. Tài liệu trển khai cho [Android](https://github.com/SteveNguyenn/micro_mobile/Android.md)
+1. Tài liệu triển khai cho [iOS](./iOS.md)
+2. Tài liệu trển khai cho [Android](./Android.md)

@@ -54,5 +54,5 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Các bộ UI có thể khác nhau giữa các mini app. Do các framework có cách triển khai UI khác nhau.
 ## Kĩ thuật
 1. Ý tưởng [Chi tiết](./content.md)
-2. Tài liệu triển khai cho [iOS](https://github.com/SteveNguyenn/micro_mobile/iOS.md)
-3. Tài liệu trển khai cho [Android](https://github.com/SteveNguyenn/micro_mobile/Android.md)
+2. Tài liệu triển khai cho [iOS](.iOS.md)
+3. Tài liệu trển khai cho [Android](./Android.md)
