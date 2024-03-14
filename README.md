@@ -15,7 +15,22 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Native core (Phân biệt với Native module): Ứng dụng chính sẽ được xây dụng/ chạy trên phần này, và việc liên kết các module lại cũng nằm trên native core (**Flutter**, **React Native**, **Native**). Thành phần **bắt buộc** phải có trong kiến trúc.</br>
 ![Native core](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/native_core.png)
 - Flutter modules(Không bắt buộc phải có trong kiến trúc): Chịu trách nhiệm phát triển một/nhiều tính năng trong ứng dụng. Các thành phần nhỏ có thể kết hợp lại với nhau và tương tác với **Native core** để hiển thị và tương tác. Xem ví dụ về flutter tại: [Yody Login](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_login), [Yody Profile](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_profile)</br>
-![Flutter modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/flutter_modules.png)
+![Flutter modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/flutter_modules.png)</br>
+- React native modules(Không bắt buộc phải có trong kiến trúc): Tương tự với **Flutter modules**. Xem ví dụ về **React Native** tại: [Yody Food](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_food), [Yody Profile](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_employee)</br>
+![React Native modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/rn_modules.png)
+</br>
+- Native modules(Không bắt buộc phải có trong kiến trúc): Tương tự với **Flutter modules** và **React Native**.
+</br>
+#### Tương tác
+1. Giữa các module với nhau:
+- **Native Core** sẽ chịu trách nhiệm làm cầu nối để nối giữa các module khác nhau lại. Ví dụ để có tương tác từ **Flutter** và **React Native** thì chúng ta sẽ đi theo tuần tự: 
+  - **Flutter** tương tác với **Native core**
+  - **Native Core** tương tác với **React Native**</br>
+![Modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/modules.png)
+2. Trong một module (tương tự giữa Flutter/React Native/Native)
+- Tính năng (Features): Nơi phát triển các tính năng của module và là nơi sẽ tương tác với **Native Core** </br>
+![Feature module](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/feature_module.png)
+- Module Core: 
 
 ### Ordered
 
