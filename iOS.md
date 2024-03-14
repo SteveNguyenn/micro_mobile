@@ -111,3 +111,38 @@ Lưu ý:
 `Xcode` -> `Build Phases` -> `Copy Bundle Resources` -> `+` -> Chọn thư mục assets lớn vừa mới tạo từ bước 1
 - Khi thực hiện xong sẽ tương tự như sau: </br></br>
 ![Assets](./images/assets.png)
+
+2. Gắn các modules vào Native:
+- Vào podfile thêm dòng dưới dòng cấu hình phiên bản cho Platform
+```
+#platform :ios, '13.0'
+# Ở ngoài hàm Target
+require_relative '../#{module_name}/node_modules/react-native/scripts/react_native_pods'
+require_relative '../#{module_name}/node_modules/react-native/scripts/react_native_pods'
+Ex:
+require_relative '../yody_food/node_modules/react-native/scripts/react_native_pods'
+require_relative '../yody_food/node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../yody_employee/node_modules/react-native/scripts/react_native_pods'
+require_relative '../yody_employee/node_modules/@react-native-community/cli-platform-ios/native_modules'
+```
+- Thêm ở trong `Target` Podfile
+```
+target '#{module_name}' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+    # Flags change depending on the env values.
+  flags = get_default_flags()
+  use_react_native!(:path => '../#{module_name}/node_modules/react-native')
+
+  # Pods for yody_micro_swift
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      end
+    end
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  end
+end
+Lưu ý: Nếu có nhiều hơn 1 module thì chỉ cần trỏ để lấy 1 phiên bản react-native ở Target (Chỉ dùng được 1 phiên bản)
+```
