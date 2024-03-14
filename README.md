@@ -52,6 +52,7 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Sẽ chậm thời gian đầu do mất thời gian chờ các engine tải dữ liệu từ các module lên.
 - Cần phải thường xuyên kiểm tra code vì chỉ cần xảy ra vấn đề ở tầng core có thể gây ra ảnh hưởng đến toàn bộ ứng dụng.
 - Các bộ UI có thể khác nhau giữa các mini app. Do các framework có cách triển khai UI khác nhau.
+- Các phiên bản React Native/ Flutter phải đồng bộ vì tránh trường hợp hợp compile ra native sẽ conflict những thư viện ở tầng core.
 ## Kĩ thuật
 1. Ý tưởng [Chi tiết](./content.md)
 2. Tài liệu triển khai cho [iOS](./OS.md)
