@@ -146,3 +146,118 @@ target '#{module_name}' do
 end
 Lưu ý: Nếu có nhiều hơn 1 module thì chỉ cần trỏ để lấy 1 phiên bản react-native ở Target (Chỉ dùng được 1 phiên bản)
 ```
+- Khi hoàn thành sẽ có cấu trúc tương tự: [PodFile](./yody_micro_swift/Podfile)
+- `pod install` để kéo thư viện về
+- Khi xong sẽ thấy các thư viện mà Flutter cần ở thư mục `Pods/Target Support` Files </br></br>
+![Pods](./images/pod.png)
+
+### Tương tác với modules
+#### Flutter
+1. Khởi chạy module
+- Vì có nhiều module nên chúng ta cần biết cần chạy module nào. Flutter có hỗ trợ để biết việc đó.
+```
+DispatchQueue.main.async { [weak self] in
+  guard let self = self else { return }
+  let engine = delegate.loginEngine
+  engine?.run(withEntrypoint: "#{funnction_name}", libraryURI: "#{path}")
+  let window = delegate.window
+  let flutterController = FlutterViewController(engine: engine!, nibName: nil, bundle: nil)
+  flutterController.modalPresentationStyle = .fullScreen
+  window?.rootViewController?.present(flutterController, animated: true)
+}
+Ex: 
+DispatchQueue.main.async { [weak self] in
+  guard let self = self else { return }
+  let engine = delegate.profileEngine
+  engine?.run(withEntrypoint: "main", libraryURI: "package:yody_profile/main.dart")
+  let window = delegate.window
+  let flutterController = FlutterViewController(engine: engine!, nibName: nil, bundle: nil)
+  self.profileChannel = FlutterMethodChannel.init(name: "profile", binaryMessenger: flutterController.binaryMessenger)
+  flutterController.modalPresentationStyle = .fullScreen
+  window?.rootViewController?.present(flutterController, animated: true)
+}
+Lưu ý: 
+- Cần gọi hàm run ở main thread
+- withEntrypoint: có thể null, nếu null thì mặc định sẽ lấy hàm main và set giá trị thì sẽ lấy hàm truyền vào
+- libraryURI: là file chưa hàm truyền vào trong withEntrypoint
+- initialRoute: là route đầu tiên, nếu dùng 2.0 có thể dùng (không bắt buộc)
+```
+2. Truyền và nhận dữ liệu qua lại</br>
+![Method Channel](./images/flutter_swift.png)</br>
+<b>Giải thích</b>
+- Flutter và (Swift/Object) tương tác được với nhau thông qua 1 lớp gọi là **MethodChannel**
+- Cơ chế gần tương tự như pub/sub tức là 1 bên bắn đi và 1 bên lắng nghe nhận lại.</br></br>
+<b>Áp dụng</b></br>
+a. Đăng ký **MethodChannel** để truyền/nhận dữ liệu giữa Flutter và Native
+- Khởi tạo MethodChannel ở Native Core:
+```
+//Tạo biến
+var loginChannel : FlutterMethodChannel?
+//Tạo Channel
+self.loginChannel = FlutterMethodChannel.init(name: "#{name}", binaryMessenger: flutterController.binaryMessenger)
+// thường đặt dưới dòng tạo FlutterViewController
+
+Ex: 
+var loginChannel : FlutterMethodChannel?
+self.loginChannel = FlutterMethodChannel.init(name: "login", binaryMessenger: flutterController.binaryMessenger)
+Lưu ý:
+- name: Dùng để định danh channel với mục đích có thể biết và kết nối được giữa Flutter và Swift
+```
+- Khởi tạo MethodChannel ở FlutterModule:
+```
+const channel = MethodChannel('#{name}');
+Lưu ý:
+- name: Dùng để định danh channel với mục đích có thể biết và kết nối được giữa Flutter và Swift
+```
+- Cách gọi từ tầng Flutter Module xuống Native Core:
+```
+//cách gọi từ tầng Flutter Module xuống tầng Native Core
+chanel.invokeMapMethod('#{name}', #{params});
+
+Ex: 
+
+Lưu ý: 
+- channel: Chính là biến tạo ở tầng Flutter Module ở bước trên 
+- name: Định danh tên sự kiện bắn đi 
+- params: Dữ liệu kèm theo sự kiện
+```
+```
+//Cách Native Core tiếp nhận sự kiện, xử lý và trả ngược lại cho Flutter Module
+self.loginChannel?.setMethodCallHandler({ [weak self] call, result in
+    guard let self = self else { return }
+})
+
+Ex: 
+self.loginChannel?.setMethodCallHandler({ [weak self] call, result in
+            guard let self = self else { return }
+    if (call.method == "result") {
+        if let arguments = call.arguments as? [String: Any], let flutterResultText = arguments["result"] as? Int {
+            self.flutterResult.text = "\(flutterResultText)"
+            flutterController.dismiss(animated: true)
+        }
+    }
+    if (call.method == "close") {
+      flutterController.dismiss(animated: true)
+    }
+})
+Lưu ý:
+- loginChannel: Là biến khởi tạo ở bước 1
+- call: Là biến bao gôm method, params để biết và xử lý
+- result: Là 1 callback khi gọi thì sẽ trả kết quả ngược lại cho tầng Flutter Module để kết thúc công việc
+```
+3. Làm sao để đóng 1 Flutter module? 
+- Sẽ không thể đóng module bằng các hàm navigation bình thường vì lúc này UI được vẽ lên 1 ViewController của native.
+- Để đóng được Flutter module thì chúng ta phải gọi từ Flutter Module xuống Native Core và Native Core sẽ chịu trách nhiệm đóng ViewController đó lại.
+- Từ 2 ta có thể triển khai như sau:
+```
+//Flutter bắn 1 sự kiện để đóng Flutter Module
+channel.invokeMapMethod('close');
+
+//Native lắng nghe và đóng Flutter Module cần đóng
+self.loginChannel?.setMethodCallHandler({ [weak self] call, result in
+            guard let self = self else { return }
+    if (call.method == "close") {
+      flutterController.dismiss(animated: true)
+    }
+})
+```

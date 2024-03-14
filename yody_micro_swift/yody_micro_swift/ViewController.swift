@@ -75,7 +75,6 @@ class ViewController: UIViewController {
           flutterController.modalPresentationStyle = .fullScreen
           window?.rootViewController?.present(flutterController, animated: true)
           //send data to flutter
-//          self.profileChannel?.invokeMethod("init", arguments: ["input": Int(flutterResult?.text ?? "")])
           self.profileChannel?.setMethodCallHandler({ [weak self] call, result in
               flutterController.dismiss(animated: true)
           })

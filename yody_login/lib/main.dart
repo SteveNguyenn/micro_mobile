@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const chanel = MethodChannel('login');
+const channel = MethodChannel('login');
 
 void main() {
   runApp(const YodyLogin());
@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    chanel.setMethodCallHandler((call) async {
+    channel.setMethodCallHandler((call) async {
       final args = call.arguments as Map;
       setState(() {
         _counter = args['input'] as num;
@@ -53,11 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _submit() {
-    chanel.invokeMapMethod('result', {'result': _counter});
+    channel.invokeMapMethod('result', {'result': _counter});
   }
 
   void _close() {
-    chanel.invokeMapMethod('close');
+    channel.invokeMapMethod('close');
   }
 
   @override
