@@ -53,5 +53,6 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Cần phải thường xuyên kiểm tra code vì chỉ cần xảy ra vấn đề ở tầng core có thể gây ra ảnh hưởng đến toàn bộ ứng dụng.
 - Các bộ UI có thể khác nhau giữa các mini app. Do các framework có cách triển khai UI khác nhau.
 ## Kĩ thuật
-1. Tài liệu triển khai cho [iOS](https://github.com/SteveNguyenn/micro_mobile/iOS.md)
-2. Tài liệu trển khai cho [Android](https://github.com/SteveNguyenn/micro_mobile/Android.md)
+1. Ý tưởng cho triển khai [Chi tiết](https://github.com/SteveNguyenn/micro_mobile/content.md)
+2. Tài liệu triển khai cho [iOS](https://github.com/SteveNguyenn/micro_mobile/iOS.md)
+3. Tài liệu trển khai cho [Android](https://github.com/SteveNguyenn/micro_mobile/Android.md)
