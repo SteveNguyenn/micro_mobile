@@ -25,6 +25,7 @@ Cách để triển khai 1 dự án iOS có dạng Microservice.
   - Xóa file SceneDelegate
   - Xóa `UIApplicationSceneManifest` trong `info.plist`
 
+### Cấu hình
 #### Flutter
 
 1. Tạo modules: Xem tại đây [Flutter](./flutter.md)
@@ -84,8 +85,29 @@ end
 ```
 - Khi hoàn thành sẽ có cấu trúc tương tự: [PodFile](./yody_micro_swift/Podfile)
 - `pod install` để kéo thư viện về
-- Khi xong sẽ thấy các thư viện mà Flutter cần ở folder `Pods/Target Support` Files </br>
+- Khi xong sẽ thấy các thư viện mà Flutter cần ở thư mục `Pods/Target Support` Files </br></br>
 ![Pods](./images/pod.png)
 > **Warning**
 > Trên Xcode 15 hiện đang có 1 lỗi là không cấu hình để tự động tạo file `Info.plist` cho các module. Để giải quyết vấn đề này mỗi lần `pod install` thì làm như sau:
 - `Xcode` -> `Pods` -> `Build Settings` (Chọn tab all) -> Tìm `Generate Info.plist file` và chuyển thành `Yes`
+
+#### React Native
+1. Lệnh tạo ra file bundle:
+- Trong file package.json thêm dòng để hỗ trợ tạo file bundle.
+```
+"scripts": {
+    "start": "react-native start",
+    "bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ../#{native folder}/#{native folder}/#{module_name}.jsbundle --assets-dest ../#{native folder}"
+}
+Ex:
+"scripts": {
+    "start": "react-native start",
+    "bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ../yody_micro_swift/yody_micro_swift/yody_employee.jsbundle --assets-dest ../yody_micro_swift"
+  }
+Lưu ý:
+- Thư mục assets chứa hình của các module con nên cần đặt tên theo từng module, để khi chạy lệnh tạo bundle thì trong thư mục assets lớn sẽ có nhưng assets theo tên module. Việc này tránh cho việc mất dữ liệu.
+```
+- Tiến hành thêm thư mục vào Xcode:
+`Xcode` -> `Build Phases` -> `Copy Bundle Resources` -> `+` -> Chọn thư mục assets lớn vừa mới tạo từ bước 1
+- Khi thực hiện xong sẽ tương tự như sau: </br></br>
+![Assets](./images/assets.png)
