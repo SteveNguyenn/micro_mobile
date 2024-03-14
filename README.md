@@ -55,5 +55,5 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Các phiên bản React Native/ Flutter phải đồng bộ vì tránh trường hợp hợp compile ra native sẽ conflict những thư viện ở tầng core.
 ## Kĩ thuật
 1. Ý tưởng [Chi tiết](./content.md)
-2. Tài liệu triển khai cho [iOS](./OS.md)
+2. Tài liệu triển khai cho [iOS](./iOS.md)
 3. Tài liệu trển khai cho [Android](./Android.md)
