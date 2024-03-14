@@ -13,9 +13,9 @@ Giúp kết hợp được các framework phổ biến để phát triển cho m
 #### Chỉ tiết
 Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Native core (Phân biệt với Native module): Ứng dụng chính sẽ được xây dụng/ chạy trên phần này, và việc liên kết các module lại cũng nằm trên native core (**Flutter**, **React Native**, **Native**). Thành phần **bắt buộc** phải có trong kiến trúc.</br>
-![Native core](https://github.com/SteveNguyenn/micro_mobile/blob/d7b47364035417b4aed696dd58050b2ecd0e22f8/images/native_core.png)
+![Native core](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/native_core.png)
 - Flutter modules(Không bắt buộc phải có trong kiến trúc): Chịu trách nhiệm phát triển một/nhiều tính năng trong ứng dụng. Các thành phần nhỏ có thể kết hợp lại với nhau và tương tác với **Native core** để hiển thị và tương tác. Xem ví dụ về flutter tại: [Yody Login](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_login), [Yody Profile](https://github.com/SteveNguyenn/micro_mobile/tree/main/yody_profile)</br>
-![Flutter modules](https://github.com/SteveNguyenn/micro_mobile/blob/d7b47364035417b4aed696dd58050b2ecd0e22f8/images/flutter_modules.png)
+![Flutter modules](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/flutter_modules.png)
 
 ### Ordered
 
