@@ -27,3 +27,51 @@ Cách để triển khai 1 dự án Android có dạng Microservice.
 - Chi tiết xem tại [Yody Umbrella](./yody_umbrella).
 2. Tạo modules: Xem tại đây [Flutter](./flutter.md)
 3. Tạo Engine cho các modules:
+- <b>Ý tưởng</b>: Chúng ta sẽ tạo 1 class kế thừa FlutterActivity với mục đích sẽ xử lý các vấn đề liên quan tới giao tiếp, engine ngay tại class này.
+```
+//Tạo class kế FlutterActivity
+class LoginActivity : FlutterActivity() {
+    companion object {
+
+        //nếu muốn cache engine thì viết hàm này
+        fun withCachedEngine(cachedEngineId: String): CachedEngineIntentBuilder {
+            return CachedEngineIntentBuilder(LoginActivity::class.java, cachedEngineId)
+        }
+        
+        //nếu dùng engine bình thường thì viết hàm này
+        fun withNewEngine(): NewEngineIntentBuilder {
+            return NewEngineIntentBuilder(LoginActivity::class.java)
+        }
+    }
+}
+
+//Sửa lại ở AndroidManifest.xml
+//Thêm dòng sau nếu AndroidManifest của bạn chưa có
+<activity
+android:name=".FoodActivity"
+android:exported="false" />
+
+Lưu ý:
+- Cần viết lại hàm tạo Engine để lúc tạo class có thể gọi tới
+- Thay LoginActivity bằng tên Activity mà bạn mong muốn
+```
+3. Gắn các modules vào Native:
+- Cấu hình ở setting.gradle
+```
+//Thêm dòng này vào pluginManagement, dependencyResolutionManagement
+maven {
+    url 'https://storage.googleapis.com/download.flutter.io'
+}
+```
+```
+//Sửa dependencyResolutionManagement từ RepositoriesMode.FAIL.... thành dòng dưới
+repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+```
+```
+//Chỉ trỏ vào thư mục gom nhóm
+setBinding(new Binding([gradle: this]))                                // new
+evaluate(new File(                                                     // new
+        settingsDir.parentFile,                                            // new
+        '#{Tên thư mục gom nhóm Flutter module}/.android/include_flutter.groovy'                   // new
+))
+```
