@@ -4,7 +4,7 @@
 
 #### Flutter
 
-![Flutter Architecture](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/flutter_arch.png)  
+![Flutter Architecture](./images/flutter_arch.png)  
 Xem thêm chi tiết tại [Flutter](https://docs.flutter.dev/resources/architectural-overview)</br>
 
 <b>Tóm tắt: </b>
@@ -23,7 +23,7 @@ Xem thêm chi tiết tại [Flutter](https://docs.flutter.dev/resources/architec
 
 #### React Native
 
-![React Native Architecture](https://github.com/SteveNguyenn/micro_mobile/blob/main/images/rn_arch.jpeg)  
+![React Native Architecture](./images/rn_arch.jpeg)  
 Xem thêm chi tiết tại [React Native](https://reactnative.dev/architecture/overview)</br>
 <b>Tóm tắt: </b>
 - React Native viết trên nền tảng là JavaScript. Mỗi lần cần vẽ UI/Logic thì bộ engine (React Native Engine) hoạt động và sẽ gọi code của các Platform.
