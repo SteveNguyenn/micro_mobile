@@ -26,7 +26,7 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
   - **Native Core** tương tác với **React Native**</br>
 ![Modules](./images/modules.png)
 2. Trong một module (tương tự giữa Flutter/React Native/Native)</br>
-![module flow](./images/feature_module.png)
+![module flow](./images/flutter_modules.png)
 - Tính năng (Features): Nơi phát triển các tính năng của module và là nơi sẽ tương tác với **Native Core** </br>
 ![Feature module](./images/feature_module.png)
 - Core: Nơi cung cấp các API để cho **Features** gọi xuống các thư viện, bộ UI đã làm sẵn, .....
