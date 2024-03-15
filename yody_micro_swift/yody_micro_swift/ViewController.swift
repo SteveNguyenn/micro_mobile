@@ -23,7 +23,7 @@ class ViewController: UIViewController {
           guard let self = self else { return }
           //get engine and run engine
           let engine = delegate.loginEngine
-          engine?.run(withEntrypoint: "main", libraryURI: "package:yody_login/main.dart")
+          engine?.run(withEntrypoint: "main", libraryURI: "package:yody_umbrella/main.dart", initialRoute: "/yody_login")
           let window = delegate.window
           //init controller
           let flutterController = FlutterViewController(engine: engine!, nibName: nil, bundle: nil)
@@ -47,6 +47,7 @@ class ViewController: UIViewController {
             }
           })
         }
+
     }
     @IBAction func foodReactNativeTapped(_ sender: Any) {
         let vc = ReactViewController()
@@ -67,7 +68,7 @@ class ViewController: UIViewController {
           guard let self = self else { return }
           //get engine and run engine
           let engine = delegate.profileEngine
-          engine?.run(withEntrypoint: "main", libraryURI: "package:yody_profile/main.dart")
+            engine?.run(withEntrypoint: "main", libraryURI: "package:yody_umbrella/main.dart", initialRoute: "/yody_profile")
           let window = delegate.window
           //init controller
           let flutterController = FlutterViewController(engine: engine!, nibName: nil, bundle: nil)

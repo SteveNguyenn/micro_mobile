@@ -1,16 +1,13 @@
 package com.example.yody_micro_android
 
-import PackageList
 import android.app.Activity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.facebook.react.ReactInstanceManager
-import com.facebook.react.ReactPackage
 import com.facebook.react.ReactRootView
 import com.facebook.react.common.LifecycleState
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 import com.facebook.soloader.SoLoader
-import com.omikitplugin.YodyFoodPackage
+import com.example.yody_micro_android.bridge.YodyFoodPackage
 
 
 class EmployeeActivity : Activity(), DefaultHardwareBackBtnHandler {

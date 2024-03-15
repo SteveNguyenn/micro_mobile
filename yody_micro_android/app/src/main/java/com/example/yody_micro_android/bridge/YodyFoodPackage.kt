@@ -1,4 +1,4 @@
-package com.omikitplugin
+package com.example.yody_micro_android.bridge
 
 import YodyFoodModule
 import android.view.View

@@ -9,7 +9,7 @@ import com.facebook.react.ReactRootView
 import com.facebook.react.common.LifecycleState
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 import com.facebook.soloader.SoLoader
-import com.omikitplugin.YodyFoodPackage
+import com.example.yody_micro_android.bridge.YodyFoodPackage
 
 
 class FoodActivity : Activity(), DefaultHardwareBackBtnHandler {
