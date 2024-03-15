@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.yody_micro_android.databinding.FragmentFirstBinding
 
@@ -15,6 +16,15 @@ class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
+
+    private var resultLauncher =
+        this.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == 100) {
+                // There are no request codes
+                val data: Intent? = result.data
+                binding.loginResult.text = "${data?.getIntExtra("result", 0)}"
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +39,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.loginButton.setOnClickListener {
-            startActivity(
+            resultLauncher.launch(
                 LoginActivity
                     .withNewEngine()
                     .initialRoute("/yody_login")
@@ -37,7 +47,7 @@ class FirstFragment : Fragment() {
             )
         }
         binding.profileButton.setOnClickListener {
-            startActivity(
+            resultLauncher.launch(
                 ProfileActivity
                     .withNewEngine()
                     .initialRoute("/yody_profile")
@@ -45,12 +55,10 @@ class FirstFragment : Fragment() {
             )
         }
         binding.foodButton.setOnClickListener {
-            startActivity(
-                Intent(view.context, FoodActivity::class.java)
-            )
+            resultLauncher.launch(Intent(view.context, FoodActivity::class.java))
         }
         binding.employeeButton.setOnClickListener {
-            startActivity(
+            resultLauncher.launch(
                 Intent(view.context, EmployeeActivity::class.java)
             )
         }

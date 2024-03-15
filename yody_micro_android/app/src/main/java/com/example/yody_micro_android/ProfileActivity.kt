@@ -6,16 +6,8 @@ import io.flutter.plugin.common.MethodChannel
 
 class ProfileActivity : FlutterActivity() {
     companion object {
-
-        fun withCachedEngine(cachedEngineId: String): FlutterActivity.CachedEngineIntentBuilder {
-            return FlutterActivity.CachedEngineIntentBuilder(
-                ProfileActivity::class.java,
-                cachedEngineId
-            )
-        }
-
-        fun withNewEngine(): FlutterActivity.NewEngineIntentBuilder {
-            return FlutterActivity.NewEngineIntentBuilder(ProfileActivity::class.java)
+        fun withNewEngine(): NewEngineIntentBuilder {
+            return NewEngineIntentBuilder(ProfileActivity::class.java)
         }
     }
 
