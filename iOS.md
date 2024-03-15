@@ -181,11 +181,11 @@ Lưu ý:
 - libraryURI: là file chưa hàm truyền vào trong withEntrypoint
 - initialRoute: là route đầu tiên, nếu dùng 2.0 có thể dùng (không bắt buộc)
 ```
-2. Truyền và nhận dữ liệu qua lại</br>
+2. Truyền và nhận dữ liệu</br>
 ![Method Channel](./images/flutter_swift.png)</br>
 <b>Giải thích</b>
 - Flutter và (Swift/Object) tương tác được với nhau thông qua 1 lớp gọi là **MethodChannel**
-- Cơ chế gần tương tự như pub/sub tức là 1 bên bắn đi và 1 bên lắng nghe nhận lại.</br></br>
+- Cơ chế gần tương tự như pub/sub tức là 1 bên bắn đi và 1 bên lắng nghe.</br></br>
 <b>Áp dụng</b></br></br>
 a. Đăng ký **MethodChannel** để truyền/nhận dữ liệu giữa Flutter và Native
 - Khởi tạo MethodChannel ở Native Core:
@@ -212,7 +212,6 @@ Lưu ý:
 ```
 //Gọi từ tầng Flutter Module xuống tầng Native Core
 chanel.invokeMapMethod('#{name}', #{params});
-
 Ex: 
 
 Lưu ý: 
@@ -244,6 +243,18 @@ Lưu ý:
 - call: Là biến bao gôm method, params để biết và xử lý
 - result: Là 1 callback khi gọi thì sẽ trả kết quả ngược lại cho tầng Flutter Module để kết thúc công việc
 ```
+- Gọi từ Native lên Flutter: Tương tự cơ chế ở bên trên.
+```
+//Viết ở swift dùng để bắn sự kiên lên cho Flutter
+self.loginChannel?.invokeMethod("result", arguments: ["input": 10])
+//Flutter lắng nghe và làm việc
+channel.setMethodCallHandler((call) async {
+  final args = call.arguments as Map;
+  setState(() {
+    _counter = args['input'] as num;
+  });
+});
+```
 3. Làm sao để đóng 1 Flutter module? 
 - Sẽ không thể đóng module bằng các hàm navigation bình thường vì lúc này UI được vẽ lên 1 ViewController của native.
 - Để đóng được Flutter module thì chúng ta phải gọi từ Flutter Module xuống Native Core và Native Core sẽ chịu trách nhiệm đóng ViewController đó lại.
@@ -260,7 +271,7 @@ self.loginChannel?.setMethodCallHandler({ [weak self] call, result in
     }
 })
 ```
-
+4. Xem đầy đủ ví dụ tại: [Mẫu](./yody_micro_swift/yody_micro_swift/ViewController.swift)
 #### React Native
 1. Khởi chạy module</br>
 **Hướng giải quyết**: **RCTRootView** chỉ là View nên để sử dụng được module thì cần tạo 1 VỉewController từ Native rồi gắn **RCTRootView** vào **ViewController** đó. Và từ đó ViewController này có nhiệm vụ tải và quản lý **RCTRootView**
@@ -294,4 +305,59 @@ Lưu ý:
 - Debug sẽ chạy localhost để kết nối với metro thuận tiện cho việc debug
 - Release sẽ chạy file bundle để tránh mất thời gian load Javascript lên
 - Khi tạo RCTRootView vào view của ViewController thì React Native UI sẽ hiển thị
+```
+2. Truyền và nhận dữ liệu qua lại
+- Khác với cơ chế bắn/nhận của Flutter thì React Native sẽ là bridge. Tức là chúng ta sẽ tạo bridge để 1 hàm gọi ở React Native sẽ tương ứng 1 hàm khai báo trong bridge ở Native. Khi muốn bắn từ Native lên React Native thì bridge cung cấp hàm kèm theo tên để có thể bắn dữ liệu lên.
+- Để tạo bridge sẽ cần 3 file:
+  - File JavaScript: Để viết các hàm để tầng JavaScript gọi và cũng là nơi để lấy ra NativeModule dùng cho việc lấy ra 1 bridge tạo ở Native.
+  - Bridge Swift File: Nơi viết các hàm chính tạo ra các hàm để xử lý và cho JavaScript gọi xuống
+  - .m File: Là file tương tác với React Native Bridge.</br>
+  
+**Lưu ý**: Tên class nên giống nhau ở JavaScript và Swift/.m file. 
+
+- Tạo bridge Swift và .m file:
+```
+//swift file (YodyEmployeeBridge.swift)
+import React
+
+@objc(YodyEmployeeBridge)
+class YodyEmployeeBridge : RCTEventEmitter {
+    
+   @objc public static var instance : YodyEmployeeBridge!
+
+    override init() {
+        super.init()
+        YodyEmployeeBridge.instance = self
+   }
+  
+  @objc override static func requiresMainQueueSetup() -> Bool {
+    return true
+  }
+  
+  public override func supportedEvents() -> [String]! {
+      return []
+  }
+}
+Lưu ý: 
+- YodyFoodBridge: Là tên Bridge, từ đây nên tạo trên JavaScript lấy được từ `NativeModules`
+- RCTEventEmitter: Là interface với mục đích cung cấp hàm `sendEvent` để gửi dữ liệu từ Native lên React Native. Nếu không dùng thì có thể kế thừa từ NSObject.
+- requiresMainQueueSetup: Để biết bridge này chạy ở thread nào
+- supportedEvents: Là hàm bắt buộc nếu kế thừa RCTEventEmitter. Mục đích là đăng ký sự kiện để bắn lên React Native
+```
+```
+//.m file (YodyEmployeeBridge.m)
+#import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
+
+@interface RCT_EXTERN_MODULE(YodyEmployeeBridge, NSObject)
+
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;
+}
+
+- (dispatch_queue_t)methodQueue {
+    return dispatch_get_main_queue();
+}
+@end
 ```
