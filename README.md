@@ -44,7 +44,7 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Các module được phát triển độc lập sẽ tránh gây ảnh hưởng tới nhau, logic chia ra rõ ràng và không cần phải chờ trong lúc đợi nhau trong lúc phát triển.
 - Có thể cập nhật được 1 số tính năng đặc thù của từng framework: Code push cho React Native module, nếu tính năng cần nhiều hiệu năng hoặc tùy biến sâu thì có thể viết bằng native giúp tối ưu tốt nhất cho trải nghiệm,....
 - Dễ dàng phát triển thêm tính năng cho tương lai.
-- Không bị phụ thuộc và Framework.
+- Không bị phụ thuộc vào Framework.
 2. Nhược điểm:
 - Ứng dụng có thể nặng hơn so với bình thường vì phải tích hợp nhiều framework vào.
 - Cần hiểu rõ nền tảng phát triển của ứng dụng: Vì cần làm nhiều với tầng native.
