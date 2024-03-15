@@ -24,38 +24,18 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Toast from 'react-native-toast-message';
-import YodyEmployeeBridge, { YodyEmployeeCallEvent, YodyEmployeeEmitter } from './YodyEmployeeBridge';
-import YodyFoodBridge from '../yody_food/YodyFoodBridge';
+import YodyEmployeeBridge from './YodyEmployeeBridge';
 
 
 const App = (props) => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [count, setCount] = useState(props["input"])
+  const [count, setCount] = useState(props.input)
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     height: '100%',
     width: '100%'
   };
-
-  const showSuccessToast = () => {
-    Toast.show({
-      type: 'success',
-      text1: 'Notification',
-      text2: 'Login success👋'
-    });
-  }
-
-  useEffect(() => {
-    const result = YodyEmployeeEmitter.addListener(YodyEmployeeCallEvent.EMPLOYEE_RESULT, employeeResult);
-    return () => {
-      result.remove();
-    }
-  }, [])
-
-  const employeeResult = (event) => {
-
-  }
 
   return (
     <SafeAreaView style={backgroundStyle}>

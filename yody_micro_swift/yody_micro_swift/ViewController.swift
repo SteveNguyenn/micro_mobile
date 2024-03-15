@@ -100,6 +100,12 @@ class ViewController: UIViewController {
                 self.employeeResult.text = "\(result)"
             }
         }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("food_updated"), object: nil, queue: .main) { [weak self] notification in
+            if let userInfo = notification.userInfo as? [String: Any], let result = userInfo["result"]  {
+                guard let self = self else { return }
+                self.foodResult.text = "\(result)"
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

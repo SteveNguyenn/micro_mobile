@@ -19,10 +19,6 @@ class ReactViewController: UIViewController {
             guard let self = self else { return }
             self.dismiss(animated: true)
         }
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("employee_updated"), object: nil, queue: .main) { [weak self] notification in
-            guard let self = self else { return }
-            self.dismiss(animated: true)
-        }
     }
     
     func setModuleName(name: String, input: Int?) {

@@ -9,7 +9,12 @@
 
 @interface RCT_EXTERN_MODULE(YodyFoodBridge, NSObject)
 
-RCT_EXTERN_METHOD(close)
+RCT_EXTERN_METHOD(close:
+                  (RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(update: (id)data
+                  withResolver: (RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
 
 + (BOOL)requiresMainQueueSetup
 {

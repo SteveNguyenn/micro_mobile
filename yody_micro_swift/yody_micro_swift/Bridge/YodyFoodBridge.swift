@@ -24,14 +24,20 @@ class YodyFoodBridge : RCTEventEmitter {
     return true
   }
   
-  // Reference to use main thread
-  @objc func close() -> Void {
+  @objc(close:withRejecter:)
+  func close(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+      NotificationCenter.default.post(Notification(name: Notification.Name("close")))
+  }
+    
+  @objc(update:withResolver:withRejecter:)
+  func update(data: Any, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+      NotificationCenter.default.post(name: Notification.Name("food_updated"), object: nil, userInfo: data as? [String: Any])
       NotificationCenter.default.post(Notification(name: Notification.Name("close")))
   }
   
   public override func supportedEvents() -> [String]! {
       return [
-        "send_result"
+        
       ]
   }
 }

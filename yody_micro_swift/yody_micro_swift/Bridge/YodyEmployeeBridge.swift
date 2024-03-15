@@ -39,11 +39,12 @@ class YodyEmployeeBridge : RCTEventEmitter {
   @objc(update:withResolver:withRejecter:)
   func update(data: Any, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
       NotificationCenter.default.post(name: Notification.Name("employee_updated"), object: nil, userInfo: data as? [String: Any])
+      NotificationCenter.default.post(Notification(name: Notification.Name("close")))
   }
     
   public override func supportedEvents() -> [String]! {
       return [
-          "employee_result"
+          
       ]
   }
 }

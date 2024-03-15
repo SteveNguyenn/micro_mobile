@@ -27,31 +27,15 @@ import Toast from 'react-native-toast-message';
 import YodyFoodBridge from './YodyFoodBridge';
 
 
-const App = () => {
+const App = (props) => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(props.input)
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     height: '100%',
     width: '100%'
   };
-
-  const showSuccessToast = () => {
-    console.log('login')
-    Toast.show({
-      type: 'success',
-      text1: 'Notification',
-      text2: 'Login success👋'
-    });
-  }
-
-  useEffect(() => {
-  }, [])
-
-  const loginCallBack = (result) => {
-    showSuccessToast();
-  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -79,7 +63,9 @@ const App = () => {
                 <Text>+</Text>
             </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          YodyFoodBridge.update({"result": count})
+        }}>
             <View style={styles.button}>
                 <Text>Send</Text>
             </View>
