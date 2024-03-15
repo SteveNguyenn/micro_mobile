@@ -33,6 +33,7 @@ Hệ thống sẽ có 4 phần chính và tách riêng biệt:
 - Library: Nơi viết sẵn các thư viện như UI, Local Storage, Network với mục đích để tận dụng được lại ở nhiều **Features** tránh lặp lại code và đồng nhất code giữa các modules. **Core** cũng với mục đích khi developer muốn thay đổi 1 bộ UI nào đó trên ứng dụng chỉ cần cập nhật ở tầng này thì các module sẽ đổi. Điều này tránh rủi cho cho việc cần phải sửa lại trên từng module khi cần cập nhật 1 vấn đề nào đó.
 #### Truyền và nhận dữ liệu giữa
 1. Giữa các module với nhau: Có 2 cách để truyền và nhận dữ liệu giữa các module
+![Passing data](./images/passing_data.png)
 - Thông qua tầng **Native Core**: Tương tự như phần tương tác thì **Native Core** cũng sẽ chịu trách nhiệm truyền và nhận dữ liệu giữa các modules với nhau. **Native Core** sẽ là cầu nối để dữ liệu chạy qua.
 - Thông qua **Local Storage**: Thay vì đi qua **Native Core** thì khi cần truyền và nhận dữ liệu thì sẽ đưa xuống **Local Storage** từ đó có thể lấy ra sử dụng ở nơi cần dữ liệu.
 2. Trong từng module với nhau: 
