@@ -20,7 +20,7 @@ Cách để triển khai 1 dự án iOS có dạng Microservice.
   - Sau khi hoàn thành các bước trên sẽ có cấu trúc tương tự: [Swift](./yody_micro_swift)
  
 > **Warning**
-> Nếu dùng SceneDelegate thì **bỏ thông làm theo các bước tiếp theo**
+> Nếu dùng SceneDelegate thì **không làm theo các bước tiếp theo**
 - Loại bỏ SceneDelegate:
   - Xóa file SceneDelegate
   - Xóa `UIApplicationSceneManifest` trong `info.plist`
