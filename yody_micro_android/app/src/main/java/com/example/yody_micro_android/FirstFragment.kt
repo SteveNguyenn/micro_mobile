@@ -24,6 +24,11 @@ class FirstFragment : Fragment() {
                 val data: Intent? = result.data
                 binding.loginResult.text = "${data?.getIntExtra("result", 0)}"
             }
+            if (result.resultCode == 101) {
+                // There are no request codes
+                val data: Intent? = result.data
+                binding.profileResult.text = "${data?.getIntExtra("result", 0)}"
+            }
         }
 
     override fun onCreateView(
