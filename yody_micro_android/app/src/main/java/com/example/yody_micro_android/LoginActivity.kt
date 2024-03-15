@@ -5,6 +5,8 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class LoginActivity : FlutterActivity() {
+
+    private var loginChannel : MethodChannel? = null
     companion object {
 
         fun withCachedEngine(cachedEngineId: String): CachedEngineIntentBuilder {
@@ -18,11 +20,11 @@ class LoginActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "login")
-            .setMethodCallHandler { call, result ->
-                if (call.method == "close") {
-                    this.finish()
-                }
+        loginChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "login")
+        loginChannel?.setMethodCallHandler { call, result ->
+            if (call.method == "close") {
+                this.finish()
             }
+        }
     }
 }

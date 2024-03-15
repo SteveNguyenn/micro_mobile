@@ -31,6 +31,7 @@ Cách để triển khai 1 dự án Android có dạng Microservice.
 ```
 //Tạo class kế FlutterActivity
 class LoginActivity : FlutterActivity() {
+    private var loginChannel : MethodChannel? = null
     companion object {
 
         //nếu muốn cache engine thì viết hàm này
@@ -48,14 +49,14 @@ class LoginActivity : FlutterActivity() {
 //Sửa lại ở AndroidManifest.xml
 //Thêm dòng sau nếu AndroidManifest của bạn chưa có
 <activity
-android:name=".FoodActivity"
+android:name=".LoginActivity"
 android:exported="false" />
 
 Lưu ý:
 - Cần viết lại hàm tạo Engine để lúc tạo class có thể gọi tới
 - Thay LoginActivity bằng tên Activity mà bạn mong muốn
 ```
-3. Gắn các modules vào Native:
+4. Gắn các modules vào Native:
 - Cấu hình ở setting.gradle
 ```
 //Thêm dòng này vào pluginManagement, dependencyResolutionManagement
@@ -74,4 +75,141 @@ evaluate(new File(                                                     // new
         settingsDir.parentFile,                                            // new
         '#{Tên thư mục gom nhóm Flutter module}/.android/include_flutter.groovy'                   // new
 ))
+```
+- Cấu hình ở build.gradle (Module:app)
+```
+//Sửa phiên bản Java
+compileOptions {
+    sourceCompatibility 11
+    targetCompatibility 11
+}
+//Thêm dòng sau ở dependencies
+implementation project(':flutter')
+```
+#### React Native
+1. Lệnh tạo ra file bundle:
+- Trong file package.json thêm dòng để hỗ trợ tạo file bundle.
+```
+"scripts": {
+    "start": "react-native start",
+    "bundle:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output ../yody_micro_android/app/src/main/assets/#{name}.index.android.bundle --assets-dest ../yody_micro_android/app/src/main/res"
+}
+Ex:
+"scripts": {
+    "start": "react-native start",
+    "bundle:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output ../yody_micro_android/app/src/main/assets/yody_employee.index.android.bundle --assets-dest ../yody_micro_android/app/src/main/res"
+  }
+Lưu ý:
+- Thư mục assets chứa hình của các module con nên cần đặt tên theo từng module, để khi chạy lệnh tạo bundle thì trong thư mục assets lớn sẽ có nhưng assets theo tên module. Việc này tránh cho việc mất dữ liệu.
+```
+2. Gắn các modules vào Native:
+- Cấu hình ở setting.gradle
+```
+//Thêm dòng này vào pluginManagement, dependencyResolutionManagement
+maven {
+    url ("$rootDir/../#{module_name}/node_modules/react-native/android")
+}
+//Nếu có nhiều hơn 1 module thì thêm tiếp vào
+```
+- Cấu hình ở build.gradle (Module:app)
+```
+//Thêm dòng sau ở dependencies
+implementation "com.facebook.react:react-native:+" // From node_modules
+implementation "org.webkit:android-jsc:+"
+```
+- Tùy chỉnh min/maxSDK nếu cần thiết
+### Tương tác với modules
+#### Flutter
+1. Điều chỉnh route ở module gom nhóm để trỏ tới những module đúng
+```
+//file main của module gom nhóm
+import 'package:flutter/material.dart';
+import 'package:yody_login/main.dart';
+import 'package:yody_profile/main.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Routes',
+      initialRoute: '/',
+      routes: {
+        '/yody_login': (context) => const YodyLogin(),//redirect to login module
+        '/yody_profile': (context) => const YodyProfile(),//redirect to profile module
+      },
+    );
+  }
+}
+Lưu ý:
+- /yody_login và /yody_profile: sẽ trỏ tới những module khi engine gọi tới.
+```
+2. Khởi chạy module
+```
+startActivity(
+    LoginActivity
+    .withNewEngine()
+    .initialRoute("#{init_router}")
+    .build(view.context)
+)
+Lưu ý:
+- LoginActivity: Là class kế thừa FlutterActivity
+- initRoute: Vì mình đã gom nhóm các module lại nên cần route để định hướng xem. initRoute chính là tên mà chúng ta khai báo ở bước 1. 
+```
+3. Truyền và nhận dữ liệu</br>
+![Method Channel](./images/flutter_swift.png)</br>
+<b>Giải thích</b>
+- Flutter và (Swift/Object) tương tác được với nhau thông qua 1 lớp gọi là **MethodChannel**
+- Cơ chế gần tương tự như pub/sub tức là 1 bên bắn đi và 1 bên lắng nghe.</br></br>
+<b>Áp dụng</b></br></br>
+a. Đăng ký **MethodChannel** để truyền/nhận dữ liệu giữa Flutter và Native
+- Khởi tạo MethodChannel ở Native Core:
+```
+//Ở class mà chúng ta đã extend từ FlutterActivity thêm như sau 
+override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+    super.configureFlutterEngine(flutterEngine)
+    loginChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "#{name}")
+    loginChannel?.setMethodCallHandler { call, result ->
+        if (call.method == "close") {
+            this.finish()
+        }
+    }
+}
+=> Hàm này mục đích là để lấy engine đã tạo và tạo ra channel để nhận/bắn sự kiện cho Flutter
+Lưu ý: 
+- name: Dùng để định danh channel với mục đích có thể biết và kết nối được giữa Flutter và Kotlin
+- call: Là biến bao gôm method, params để biết và xử lý
+- result: Là 1 callback khi gọi thì sẽ trả kết quả ngược lại cho tầng Flutter Module để kết thúc công việc
+```
+- Khởi tạo MethodChannel ở FlutterModule:
+```
+const channel = MethodChannel('#{name}');
+Lưu ý:
+- name: Dùng để định danh channel với mục đích có thể biết và kết nối được giữa Flutter và Kotlin
+```
+- Gọi từ tầng Flutter Module xuống Native Core:
+```
+//Gọi từ tầng Flutter Module xuống tầng Native Core
+chanel.invokeMapMethod('#{name}', #{params});
+Ex: 
+
+Lưu ý: 
+- channel: Chính là biến tạo ở tầng Flutter Module ở bước trên 
+- name: Định danh tên sự kiện bắn đi 
+- params: Dữ liệu kèm theo sự kiện
+```
+- Gọi từ Native lên Flutter: Tương tự cơ chế ở bên trên.
+```
+//Viết ở Kotlin dùng để bắn sự kiên lên cho Flutter
+this.loginChannel?.invokeMethod("result", arguments: {"input": 10})
+//Flutter lắng nghe và làm việc
+channel.setMethodCallHandler((call) async {
+  final args = call.arguments as Map;
+  setState(() {
+    _counter = args['input'] as num;
+  });
+});
 ```
