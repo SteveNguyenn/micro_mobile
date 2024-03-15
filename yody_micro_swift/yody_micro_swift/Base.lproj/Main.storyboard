@@ -147,10 +147,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="employeeResult" destination="Pcu-Mq-ccf" id="WjA-B9-emk"/>
-                        <outlet property="flutterResult" destination="zTh-sh-YW5" id="jls-ei-uxX"/>
-                        <outlet property="foodResult" destination="b25-EV-uku" id="Bax-Bq-vlh"/>
-                        <outlet property="reactNativeResult" destination="b25-EV-uku" id="FYo-oR-hLH"/>
+                        <outlet property="employeeResult" destination="Pcu-Mq-ccf" id="ghL-Q3-7wd"/>
+                        <outlet property="foodResult" destination="b25-EV-uku" id="0Mh-Q1-3uQ"/>
+                        <outlet property="loginResult" destination="zTh-sh-YW5" id="5gT-gp-uQc"/>
+                        <outlet property="profileResult" destination="z1w-lo-9NM" id="368-Td-Fpx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

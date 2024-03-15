@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 void main() => runApp(const YodyProfile());
 
-const chanel = MethodChannel('profile');
+const channel = MethodChannel('profile');
 
 class YodyProfile extends StatelessWidget {
   const YodyProfile({super.key});
@@ -24,13 +24,16 @@ class YodyProfile extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Profile'),
+      home: const MyHomePage(title: 'Profile Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    super.key,
+    required this.title,
+  });
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -57,12 +60,16 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter += 3;
     });
   }
 
   void _close() {
-    chanel.invokeMapMethod('close');
+    channel.invokeMapMethod('close');
+  }
+
+  void _submit() {
+    channel.invokeMapMethod('result', {'result': _counter});
   }
 
   @override
@@ -78,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        centerTitle: true,
         actions: [
           FloatingActionButton(
             onPressed: _close,
@@ -110,6 +118,15 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset(
+              'yody_profile_assets/images/architecture.jpeg',
+              width: 100,
+              height: 100,
+              package: "yody_profile",
+            ),
+            const SizedBox(
+              height: 60,
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -120,11 +137,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Row(
+        children: [
+          const SizedBox(
+            width: 32,
+          ),
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          const Spacer(),
+          FloatingActionButton(
+            onPressed: _submit,
+            tooltip: 'Submit',
+            child: const Icon(Icons.subdirectory_arrow_left_outlined),
+          ),
+        ],
+      ),
     );
   }
 }

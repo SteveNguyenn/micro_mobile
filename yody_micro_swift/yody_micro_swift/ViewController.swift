@@ -10,10 +10,12 @@ import Flutter
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var reactNativeResult: UILabel!
-    @IBOutlet weak var flutterResult: UILabel!
-    @IBOutlet weak var employeeResult: UILabel!
     @IBOutlet weak var foodResult: UILabel!
+    @IBOutlet weak var profileResult: UILabel!
+    @IBOutlet weak var loginResult: UILabel!
+    @IBOutlet weak var employeeResult: UILabel!
+    
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var loginChannel : FlutterMethodChannel?
     var profileChannel : FlutterMethodChannel?
@@ -31,12 +33,12 @@ class ViewController: UIViewController {
           flutterController.modalPresentationStyle = .fullScreen
           window?.rootViewController?.present(flutterController, animated: true)
           //send data to flutter
-          self.loginChannel?.invokeMethod("init", arguments: ["input": Int(flutterResult?.text ?? "")])
+          self.loginChannel?.invokeMethod("init", arguments: ["input": Int(loginResult?.text ?? "")])
           self.loginChannel?.setMethodCallHandler({ [weak self] call, result in
             guard let self = self else { return }
             if (call.method == "result") {
                 if let arguments = call.arguments as? [String: Any], let flutterResultText = arguments["result"] as? Int {
-                    self.flutterResult.text = "\(flutterResultText)"
+                    self.loginResult.text = "\(flutterResultText)"
                     flutterController.dismiss(animated: true)
                 }
             }
@@ -77,7 +79,14 @@ class ViewController: UIViewController {
           window?.rootViewController?.present(flutterController, animated: true)
           //send data to flutter
           self.profileChannel?.setMethodCallHandler({ [weak self] call, result in
-              flutterController.dismiss(animated: true)
+              if (call.method == "result") {
+                  if let arguments = call.arguments as? [String: Any], let flutterResultText = arguments["result"] as? Int {
+                      self?.profileResult.text = "\(flutterResultText)"
+                      flutterController.dismiss(animated: true)
+                  }
+              } else {
+                  flutterController.dismiss(animated: true)
+              }
           })
         }
     }
