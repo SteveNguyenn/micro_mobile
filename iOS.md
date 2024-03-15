@@ -274,7 +274,7 @@ self.loginChannel?.setMethodCallHandler({ [weak self] call, result in
 4. Xem đầy đủ ví dụ tại: [Mẫu](./yody_micro_swift/yody_micro_swift/ViewController.swift)
 #### React Native
 1. Khởi chạy module</br>
-**Hướng giải quyết**: **RCTRootView** chỉ là View nên để sử dụng được module thì cần tạo 1 VỉewController từ Native rồi gắn **RCTRootView** vào **ViewController** đó. Và từ đó ViewController này có nhiệm vụ tải và quản lý **RCTRootView**
+**Hướng giải quyết**: **RCTRootView** chỉ là View nên để sử dụng được module thì cần tạo 1 ViewController từ Native rồi gắn **RCTRootView** vào **ViewController** đó. Và từ đó ViewController này có nhiệm vụ tải và quản lý **RCTRootView**
 ```
 //ViewController để chạy RCTRootView
 class ReactViewController: UIViewController {

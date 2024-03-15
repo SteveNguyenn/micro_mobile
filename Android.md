@@ -213,3 +213,133 @@ channel.setMethodCallHandler((call) async {
   });
 });
 ```
+4. Làm sao để đóng 1 Flutter module? 
+- Sẽ không thể đóng module bằng các hàm navigation bình thường vì lúc này UI được vẽ lên 1 ViewController của native.
+- Để đóng được Flutter module thì chúng ta phải gọi từ Flutter Module xuống Native Core và Native Core sẽ chịu trách nhiệm đóng ViewController đó lại.
+- Từ 2 ta có thể triển khai như sau:
+```
+//Flutter bắn 1 sự kiện để đóng Flutter Module
+channel.invokeMapMethod('close');
+
+//Native lắng nghe và đóng Flutter Module cần đóng
+loginChannel?.setMethodCallHandler { call, result ->
+    if (call.method == "close") {
+        this.finish()
+    }
+}
+```
+5. Xem đầy đủ ví dụ tại: [Mẫu](./yody_micro_android)
+#### React Native
+1. Khởi chạy module</br>
+**Hướng giải quyết**: **RCTRootView** chỉ là View nên để sử dụng được module thì cần tạo 1 Activity từ Native rồi gắn **RCTRootView** vào **Activity** đó. Và từ đó Activity này có nhiệm vụ tải và quản lý **RCTRootView**
+```
+//Activity để chạy RCTRootView
+import PackageList
+import android.app.Activity
+import android.os.Bundle
+import com.facebook.react.ReactInstanceManager
+import com.facebook.react.ReactPackage
+import com.facebook.react.ReactRootView
+import com.facebook.react.common.LifecycleState
+import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
+import com.facebook.soloader.SoLoader
+import com.omikitplugin.YodyFoodPackage
+
+
+class FoodActivity : Activity(), DefaultHardwareBackBtnHandler {
+
+    private var mReactRootView: ReactRootView? = null
+    private var mReactInstanceManager: ReactInstanceManager? = null
+
+    companion object {
+        var fa: FoodActivity? = null
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fa = this
+        //tải RCTRootView
+    }
+
+    override fun invokeDefaultOnBackPressed() {
+        super.onBackPressed()
+    }
+}
+```
+
+```
+///Khởi tạo RCTRootView và gắn vào ViewController
+SoLoader.init(this, false)
+mReactRootView = ReactRootView(this)
+val packages: MutableList<ReactPackage> = PackageList(application).packages.toMutableList()
+packages.add(YodyFoodPackage())
+// Packages that cannot be autolinked yet can be added manually here, for example:
+// packages.add(new MyReactNativePackage());
+// Remember to include them in `settings.gradle` and `app/build.gradle` too.
+mReactInstanceManager = ReactInstanceManager.builder()
+    .setApplication(application)
+    .setCurrentActivity(this)
+    .setBundleAssetName("#{bundle_name}")
+    .addPackages(packages)
+    .setInitialLifecycleState(LifecycleState.RESUMED)
+    .build()
+// The string here (e.g. "MyReactNativeApp") has to match
+// the string in AppRegistry.registerComponent() in index.js
+mReactRootView?.startReactApplication(mReactInstanceManager, "yody_food", null)
+setContentView(mReactRootView)
+Lưu ý:
+- Khi tạo RCTRootView vào view của Activity thì React Native UI sẽ hiển thị
+- YodyFoodPackage: là package chuyên phụ trách để nhận/bắn dữ liệu với React Naitve (tự viết bridge)
+- bundle_name: là tên mà đã gen bằng lệnh `yarn bundle:android` lúc cấu hình
+```
+2. Truyền và nhận dữ liệu qua lại
+- Khác với cơ chế bắn/nhận của Flutter thì React Native sẽ là bridge. Tức là chúng ta sẽ tạo bridge để 1 hàm gọi ở React Native sẽ tương ứng 1 hàm khai báo trong bridge ở Native. Khi muốn bắn từ Native lên React Native thì bridge cung cấp hàm kèm theo tên để có thể bắn dữ liệu lên.
+- Để tạo bridge sẽ cần 3 file:
+  - File JavaScript: Để viết các hàm để tầng JavaScript gọi và cũng là nơi để lấy ra NativeModule dùng cho việc lấy ra 1 bridge tạo ở Native.
+  - Module file: Nơi viết các hàm chính tạo ra các hàm để xử lý và cho JavaScript gọi xuống
+  - PackageFile: Là nơi gom nhiều module lại và cấu hình lúc tải cùng RCTRootView </br>
+- Tạo module file:
+```
+class YodyFoodModule(reactContext: ReactApplicationContext?) :
+    ReactContextBaseJavaModule(reactContext) {
+    override fun getName(): String {
+        return "YodyFoodBridge"
+    }
+    @ReactMethod
+    fun close(promise: Promise) {
+        FoodActivity.fa?.finish()
+    }
+}
+Lưu ý: 
+- getName: Là tên Bridge, từ đây nên tạo trên JavaScript lấy được từ `NativeModules`
+```
+
+- Tạo package file:
+```
+class YodyFoodPackage : ReactPackage {
+    override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+        return listOf(
+            YodyFoodModule(reactContext),
+        )
+    }
+
+    override fun createViewManagers(p0: ReactApplicationContext): MutableList<ViewManager<View, ReactShadowNode<*>>> {
+        return arrayListOf()
+    }
+}
+Lưu ý: 
+- createNativeModules: Đăng ký module cho package
+- createViewManagers: Nếu cần sử dụng View ở native thì dùng hàm này, còn không thì bỏ qua.
+```
+- Tạo file ở React Native
+```
+import { NativeModules, NativeEventEmitter } from 'react-native';
+const { YodyFoodBridge } = NativeModules;
+//lấy ra được bridge từ NativeModules
+export default YodyFoodBridge;
+//Dùng để nhận sự kiện từ Native bắn lên (Nếu không có thì không cần)
+export const YodyFoodEmitter = new NativeEventEmitter(YodyFoodBridge);
+//Đăng ký tên sự kiện (trùng với supportedEvents ở Native)
+export const YodyFoodCallEvent = {
+};
+```
+**Xong rồi bây giờ tiến hành viết hàm để sử dụng thôi nào**</br>
