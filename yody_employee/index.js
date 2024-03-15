@@ -24,7 +24,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Toast from 'react-native-toast-message';
-import YodyEmployeeBridge from './YodyEmployeeBridge';
+import YodyEmployeeBridge, { YodyEmployeeCallEvent, YodyEmployeeEmitter } from './YodyEmployeeBridge';
+import YodyFoodBridge from '../yody_food/YodyFoodBridge';
 
 
 const App = (props) => {
@@ -46,10 +47,14 @@ const App = (props) => {
   }
 
   useEffect(() => {
+    const result = YodyEmployeeEmitter.addListener(YodyEmployeeCallEvent.EMPLOYEE_RESULT, employeeResult);
+    return () => {
+      result.remove();
+    }
   }, [])
 
-  const loginCallBack = (result) => {
-    showSuccessToast();
+  const employeeResult = (event) => {
+
   }
 
   return (

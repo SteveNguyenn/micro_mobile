@@ -317,19 +317,12 @@ Lưu ý:
 
 - Tạo bridge Swift và .m file:
 ```
-//swift file (YodyEmployeeBridge.swift)
+//Swift file (YodyEmployeeBridge.swift)
 import React
 
 @objc(YodyEmployeeBridge)
 class YodyEmployeeBridge : RCTEventEmitter {
     
-   @objc public static var instance : YodyEmployeeBridge!
-
-    override init() {
-        super.init()
-        YodyEmployeeBridge.instance = self
-   }
-  
   @objc override static func requiresMainQueueSetup() -> Bool {
     return true
   }
@@ -361,3 +354,108 @@ Lưu ý:
 }
 @end
 ```
+- Tạo file ở React Native
+```
+import { NativeModules, NativeEventEmitter } from 'react-native';
+const { YodyEmployeeBridge } = NativeModules;
+//lấy ra được bridge từ NativeModules
+export default YodyEmployeeBridge;
+//Dùng để nhận sự kiện từ Native bắn lên (Nếu không có thì không cần)
+export const YodyEmployeeEmitter = new NativeEventEmitter(YodyEmployeeBridge);
+//Đăng ký tên sự kiện (trùng với supportedEvents ở Native)
+export const YodyEmployeeCallEvent = {
+};
+```
+**Xong rồi bây giờ tiến hành viết hàm để sử dụng thôi nào**</br>
+
+a. Từ React native gọi xuống Native
+```
+//Thêm ở .m file
+//Nếu không có params
+RCT_EXTERN_METHOD(close: 
+                  (RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+//Cần truyền thêm params
+RCT_EXTERN_METHOD(update: (id)data
+                  withResolver: (RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+Lưu ý: 
+- resolve: callback để trả kết quả về cho React Native
+- reject: từ chối xử lý (nếu params có vấn đề gì đó, ...vvv....)
+```
+```
+//Triển khai ở swift file
+ @objc(close:withRejecter:)
+  func close(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+        //viết xử lý tại đây
+        resolve(true)
+  }
+ 
+  
+  @objc(update:withResolver:withRejecter:)
+  func update(data: Any, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+        //viết xử lý tại đây
+        resolve(true)
+  }
+  Lưu ý: 
+  - resolve: Có thể gửi nhiều kiểu dữ liệu
+```
+```
+//React Native gọi vào
+const result = await YodyEmployeeBridge.close();
+```
+b. Từ Native gọi lên React Native
+- Do hàm sendEvent không thể thấy ngoài bridge nên sẽ tùy biến swift file để có thể gọi ngoài swift
+```
+//Tạo biến static và viết hàm để gọi vào 
+//Cần kế thừa RCTEventEmitter 
+//Swift file (YodyEmployeeBridge.swift)
+import React
+
+@objc(YodyEmployeeBridge)
+class YodyEmployeeBridge : RCTEventEmitter {
+    
+   @objc public static var instance : YodyEmployeeBridge!
+
+   override init() {
+       super.init()
+       YodyEmployeeBridge.instance = self
+   } 
+       
+  @objc override static func requiresMainQueueSetup() -> Bool {
+    return true
+  }
+  
+  //đăng ký sự kiện "employee_result"
+  public override func supportedEvents() -> [String]! {
+      return [
+        "employee_result"
+      ]
+  }
+}
+```
+```
+//Đăng ký sự kiện tại bridge JavaScript
+//Gửi sự kiện đi 
+YodyEmployeeBridge.instance.sendEvent("#{name}", #{params})
+Lưu ý:
+- name: Phải là tên đã được đăng ký ở supportedEvents
+- params: Dữ liệu gửi đi
+```
+
+```
+//Nhận sự kiện ở React Native
+useEffect(() => {
+    const result = YodyEmployeeEmitter.addListener('employee_result', employeeResult);
+    return () => {
+      //Xóa khi thoát khỏi màn hình
+      result.remove();
+    }
+}, [])
+
+//xử lý sự kiện tại đây
+const employeeResult = (event) => {
+
+}
+```
+**Xem đầy đủ tại** [React Native](./yody_employee) và [Swift](./yody_micro_swift/yody_micro_swift/Bridge)
