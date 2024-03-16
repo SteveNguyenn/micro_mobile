@@ -6,6 +6,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class ProfileActivity : FlutterActivity() {
+    private var profileChannel : MethodChannel? = null
     companion object {
         fun withNewEngine(): NewEngineIntentBuilder {
             return NewEngineIntentBuilder(ProfileActivity::class.java)
@@ -14,8 +15,9 @@ class ProfileActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "profile")
-            .setMethodCallHandler { call, result ->
+        profileChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "profile")
+        profileChannel?.invokeMethod("init", mapOf("input" to intent.getIntExtra("input", 0)))
+        profileChannel?.setMethodCallHandler { call, result ->
                 if (call.method == "close") {
                     this.finish()
                 }

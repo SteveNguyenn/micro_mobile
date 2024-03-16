@@ -6,7 +6,6 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class LoginActivity : FlutterActivity() {
-
     private var loginChannel : MethodChannel? = null
     companion object {
         fun withNewEngine(): NewEngineIntentBuilder {
@@ -17,6 +16,7 @@ class LoginActivity : FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         loginChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "login")
+        loginChannel?.invokeMethod("init", mapOf("input" to intent.getIntExtra("input", 0)))
         loginChannel?.setMethodCallHandler { call, result ->
             if (call.method == "close") {
                 this.finish()

@@ -42,10 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     channel.setMethodCallHandler((call) async {
-      final args = call.arguments as Map;
-      setState(() {
-        _counter = args['input'] as num;
-      });
+      if (call.method == "init") {
+        final args = call.arguments as Map;
+        setState(() {
+          _counter = args['input'] as num;
+        });
+      }
     });
   }
 

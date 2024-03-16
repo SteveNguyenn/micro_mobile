@@ -49,6 +49,7 @@ class FirstFragment : Fragment() {
                     .withNewEngine()
                     .initialRoute("/yody_login")
                     .build(view.context)
+                    .putExtra("input", binding.loginResult.text.toString().toInt())
             )
         }
         binding.profileButton.setOnClickListener {
@@ -57,6 +58,7 @@ class FirstFragment : Fragment() {
                     .withNewEngine()
                     .initialRoute("/yody_profile")
                     .build(view.context)
+                    .putExtra("input", binding.profileResult.text.toString().toInt())
             )
         }
         binding.foodButton.setOnClickListener {
